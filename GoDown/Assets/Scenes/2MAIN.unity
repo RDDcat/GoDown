@@ -496,7 +496,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9f84f050f947184f9914c72bbcb82ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainCanvas: {fileID: 1366422028}
   gameOverCanvas: {fileID: 1475168781}
+  money: 0
+  score: 0
 --- !u!4 &665693856
 Transform:
   m_ObjectHideFlags: 0
