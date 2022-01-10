@@ -5,7 +5,8 @@ using UnityEngine;
 public class AccountVO
 {
     public int level;
-    public long gold;
+    public long money;
+    public long highestScore;
 
 
 }

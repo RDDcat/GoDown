@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SaveSystem
+public static class SaveSystem
 {
 
-    public void Save(Object o)
+    public static void Save(object o)
     {
         // 저장
     }
 
-    public Object Load()
+    public static object Load()
     {
         // 불러오기
         return null;
