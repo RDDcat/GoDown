@@ -37,6 +37,10 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadSceneAsync("3INGAME", LoadSceneMode.Additive);
         }
+        if (SceneManager.GetSceneByName("5CHARACTER").isLoaded == false)
+        {
+            SceneManager.LoadSceneAsync("5CHARACTER", LoadSceneMode.Additive);
+        }
     }
 
     void CloseMainCanvas()
