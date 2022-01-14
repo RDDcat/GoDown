@@ -47,7 +47,19 @@ public class MoblieTouch : MonoBehaviour
 
     }
 
+    public void Right()
+    {                   
+        float offset = speed * Time.deltaTime;
+            
+        transform.position = new Vector2(transform.position.x + 1, transform.position.y);
+           
+    }
+    public void Left()
+    {
+        float offset = speed * Time.deltaTime;
 
+        transform.position = new Vector2(transform.position.x - 1, transform.position.y);
+    }
 
 
 
