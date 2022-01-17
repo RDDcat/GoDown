@@ -2,8 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Physics : MonoBehaviour
+public class Upgrade : MonoBehaviour
 {
-    // Æó±â
+    public void Sample()
+    {
+
+    }
+
+
+
+
+
+
 
 }

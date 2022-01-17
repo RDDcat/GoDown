@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     public Canvas MainCanvas;
     public Canvas gameOverCanvas;
 
+    public Blocks blocks;
+    public Player player;
+
     public long money;
     public long score;
 
@@ -20,6 +23,9 @@ public class GameManager : MonoBehaviour
         // 씬전환
         // 인게임 씬 켜기
         LoadInGameScene();
+
+        // 플레이어 블록 맵핑
+        Mapping();
 
         // 메인캔버스 끄기
         CloseMainCanvas();
@@ -43,6 +49,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void Mapping()
+    {
+        blocks = FindObjectOfType<Blocks>();
+        player = FindObjectOfType<Player>();
+    }
+
     void CloseMainCanvas()
     {
         MainCanvas.enabled = false;
@@ -58,6 +70,9 @@ public class GameManager : MonoBehaviour
         // 게임 종료시 변수 초기화
         GameEndVarInit();
 
+        // 인게임 씬 닫기
+        UnLoadInGameScene();
+
         // 계정 저장
 
 
@@ -70,5 +85,17 @@ public class GameManager : MonoBehaviour
     {
         score = 0;
         money = 0;
+    }
+
+    void UnLoadInGameScene()
+    {
+        if (SceneManager.GetSceneByName("3INGAME").isLoaded == true)
+        {
+            SceneManager.UnloadSceneAsync("3INGAME");
+        }
+        if (SceneManager.GetSceneByName("5CHARACTER").isLoaded == true)
+        {
+            SceneManager.UnloadSceneAsync("5CHARACTER");
+        }        
     }
 }

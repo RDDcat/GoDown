@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MoblieTouch : MonoBehaviour
 {
+    public Transform t;
+    public float speed;
+    public Text tt;
+    public Text ttt;
 
     private void Update()
     {
@@ -15,24 +20,46 @@ public class MoblieTouch : MonoBehaviour
         // 터치 입력시 실행
         if(Input.touchCount > 0)
         {
-            // 
+            
             Touch touch = Input.GetTouch(0);
+            float offset = speed * Time.deltaTime;
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(touch.position);
 
-            // 터치가 캐릭터보다 오른쪽일때
+            // 디버그 텍스트
+            tt.text = touch.position.x.ToString();
+            ttt.text = mousePos.x.ToString();
 
-            // 캐릭터인 오른쪽으로 캐릭터 움직임 속도만큼 이동 (+델타타임?)
+
+            if (mousePos.x - transform.position.x > 0)
+            {                
+                transform.position = new Vector2(transform.position.x + offset, transform.position.y);
+            }
+            if (mousePos.x - transform.position.x < 0)
+            {
+                transform.position = new Vector2(transform.position.x - offset, transform.position.y);
+            }
+                       
 
 
-            // 터치가 캐릭터보다 왼쪽일때
-
-            // 캐릭터인 왼쪽으로 캐릭터 움직임 속도만큼 이동 (+델타타임?)
 
         }
 
 
     }
 
+    public void Right()
+    {                   
+        float offset = speed * Time.deltaTime;
+            
+        transform.position = new Vector2(transform.position.x + 1, transform.position.y);
+           
+    }
+    public void Left()
+    {
+        float offset = speed * Time.deltaTime;
 
+        transform.position = new Vector2(transform.position.x - 1, transform.position.y);
+    }
 
 
 
