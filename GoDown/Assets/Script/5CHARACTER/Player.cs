@@ -6,19 +6,50 @@ public class Player : MonoBehaviour
 {
     public GameManager gameManager;
     public float gauge;
+    public MoblieTouch touch;
+    public Blocks blocks;
+    public BackGround2 back;
 
-
-    private void Awake()
+    private void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
+        GameManagerMapping();
+        Mapping();
+
+    }
+
+    void GameManagerMapping()
+    {
+        try
+        {
+            gameManager = FindObjectOfType<GameManager>();
+            gameManager.Mapping();
+        }
+        catch
+        {
+            Debug.Log("플레이어에서 게임매니저가 맵핑이 안됨");
+        }
+    }
+
+    public void Mapping()
+    {
+        try
+        {
+            blocks = FindObjectOfType<Blocks>();
+            back = FindObjectOfType<BackGround2>();
+        }
+        catch
+        {
+            Debug.Log("플레이어에서 맵핑이 안됨");
+        }
     }
 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // 플레이어가 블럭에 부딪혔을때 플레이어는
-        if (collision.gameObject.tag == "Block")
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Object"))
         {
+            Debug.Log("부딪혔다 플레이어가 블럭에 ");
             // 블럭 채력 받아와서 speed 감소
             Block block = collision.gameObject.GetComponent<Block>();
             gauge = block.GetAfterGauge(gauge);
@@ -35,8 +66,16 @@ public class Player : MonoBehaviour
     {
         if(gauge < 0)
         {
-            //플레이어 사망
+            // 플레이어 사망
+            // 플레이어 고정
+            // 배경 멈춤
+            back.FreezeBackGroundMove();
 
+            // 블록 멈춤
+            blocks.FreezeBlocks();
+
+            // 터치 중단
+            touch.FreezeTouch();
 
             // 게임종료
             gameManager.GameEnd();

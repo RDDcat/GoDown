@@ -7,13 +7,18 @@ public class GameManager : MonoBehaviour
 {
     public Canvas MainCanvas;
     public Canvas gameOverCanvas;
-
+    public GameObject backGround;
+    
     public Blocks blocks;
     public Player player;
 
     public long money;
     public long score;
 
+    private void Start()
+    {
+
+    }
 
     public void GameStart()
     {
@@ -25,16 +30,29 @@ public class GameManager : MonoBehaviour
         LoadInGameScene();
 
         // 플레이어 블록 맵핑
-        Mapping();
+        Invoke("Mapping", 0.1f);
 
         // 메인캔버스 끄기
         CloseMainCanvas();
+
+        // 배경 끄기
+        CloseBackGround();
 
         // 게임 시작 사운드
 
         //
 
 
+    }
+
+    void CloseBackGround()
+    {
+        backGround.SetActive(false);
+    }
+
+    void OpenBackGround()
+    {
+        backGround.SetActive(true);
     }
 
     void LoadInGameScene()
@@ -49,10 +67,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Mapping()
+    public void Mapping()
     {
-        blocks = FindObjectOfType<Blocks>();
-        player = FindObjectOfType<Player>();
+        if (blocks == null)
+        {
+            blocks = FindObjectOfType<Blocks>();
+        }
+        if (player == null)
+        {
+            player = FindObjectOfType<Player>();
+        }
     }
 
     void CloseMainCanvas()
@@ -60,9 +84,26 @@ public class GameManager : MonoBehaviour
         MainCanvas.enabled = false;
     }
 
+    public void OpenMainCanvas()
+    {
+        MainCanvas.enabled = true;
+    }
+    public void CloseGameOverCanavs()
+    {
+        gameOverCanvas.enabled = false;
+    }
+
+    public void OpenGameOverCanavs()
+    {
+        gameOverCanvas.enabled = true;
+    }
+
     public void GameEnd()
     {
+        Debug.Log("게임 엔드");
+
         // 게임 종료 보상 계정에 더하기
+
 
         // 최고 스코어 저장
         AccountManager.instance.CheckHighestScore(score);
@@ -70,8 +111,8 @@ public class GameManager : MonoBehaviour
         // 게임 종료시 변수 초기화
         GameEndVarInit();
 
-        // 인게임 씬 닫기
-        UnLoadInGameScene();
+        // 결과창 켜기
+        OpenGameOverCanavs();
 
         // 계정 저장
 
@@ -87,7 +128,14 @@ public class GameManager : MonoBehaviour
         money = 0;
     }
 
-    void UnLoadInGameScene()
+    public void GameOverButton()
+    {
+        UnLoadInGameScene();
+        OpenMainCanvas();
+        CloseGameOverCanavs();
+    }
+
+    public void UnLoadInGameScene()
     {
         if (SceneManager.GetSceneByName("3INGAME").isLoaded == true)
         {

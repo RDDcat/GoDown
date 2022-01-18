@@ -9,6 +9,8 @@ public class MoblieTouch : MonoBehaviour
     public float speed;
     public Text tt;
     public Text ttt;
+    // private
+    public bool isTouch;
 
     private void Update()
     {
@@ -17,36 +19,53 @@ public class MoblieTouch : MonoBehaviour
 
     void OnTouch()
     {
-        // 터치 입력시 실행
-        if(Input.touchCount > 0)
+        if (isTouch)
         {
-            
-            Touch touch = Input.GetTouch(0);
-            float offset = speed * Time.deltaTime;
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(touch.position);
-
-            // 디버그 텍스트
-            tt.text = touch.position.x.ToString();
-            ttt.text = mousePos.x.ToString();
-
-
-            if (mousePos.x - transform.position.x > 0)
-            {                
-                transform.position = new Vector2(transform.position.x + offset, transform.position.y);
-            }
-            if (mousePos.x - transform.position.x < 0)
+            // 터치 입력시 실행
+            if (Input.touchCount > 0)
             {
-                transform.position = new Vector2(transform.position.x - offset, transform.position.y);
+
+                Touch touch = Input.GetTouch(0);
+                float offset = speed * Time.deltaTime;
+                Vector2 mousePos = Camera.main.ScreenToWorldPoint(touch.position);
+
+                // 디버그 텍스트
+                tt.text = touch.position.x.ToString();
+                ttt.text = mousePos.x.ToString();
+
+
+                if (mousePos.x - transform.position.x > 0)
+                {
+                    transform.position = new Vector2(transform.position.x + offset, transform.position.y);
+                }
+                if (mousePos.x - transform.position.x < 0)
+                {
+                    transform.position = new Vector2(transform.position.x - offset, transform.position.y);
+                }
+
+
+
+
             }
-                       
-
-
-
         }
-
 
     }
 
+
+    // 외부에서 터치 컨트롤
+    public void FreezeTouch()
+    {
+        Debug.Log("FreezeTouch 얼음");
+        isTouch = false;
+    }
+
+    public void MeltTouch()
+    {
+        isTouch = true;
+    }
+
+
+    // 에디터 디버그용
     public void Right()
     {                   
         float offset = speed * Time.deltaTime;

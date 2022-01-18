@@ -8,6 +8,8 @@ public class BackGround2 : MonoBehaviour
 
     private float offset;
     public float speed;
+    // private
+    public bool isBackGroundMove;
 
     void Start()
     {
@@ -17,7 +19,26 @@ public class BackGround2 : MonoBehaviour
 
     void FixedUpdate()
     {
-        offset += Time.deltaTime * speed;
-        render.material.mainTextureOffset = new Vector2(0, -offset);
+        MoveBackGround();
+    }
+
+    void MoveBackGround()
+    {
+        if (isBackGroundMove)
+        {
+            offset += Time.deltaTime * speed;
+            render.material.mainTextureOffset = new Vector2(0, -offset);
+        }        
+    }
+
+    public void FreezeBackGroundMove()
+    {
+        Debug.Log("백그라운드 얼음");
+        isBackGroundMove = false;
+    }
+
+    public void MeltBackGroundMove()
+    {
+        isBackGroundMove = true;
     }
 }

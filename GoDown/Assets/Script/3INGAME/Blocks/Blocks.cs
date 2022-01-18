@@ -4,20 +4,12 @@ using UnityEngine;
 
 public class Blocks : MonoBehaviour
 {
-    public GameObject[] blocks;
-
     public float speed;
-
-    private void FixedUpdate()
+        
+    
+    public void FreezeBlocks()
     {
-        MoveObject();
-    }
-
-    void MoveObject()
-    {
-        foreach (GameObject obj in blocks)
-        {
-            obj.transform.Translate(Vector3.up * speed * Time.deltaTime);
-        }
-    }
+        Debug.Log("FreezeBlocks ¾óÀ½");        
+        speed = 0;
+    }        
 }
