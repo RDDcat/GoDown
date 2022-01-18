@@ -1003,6 +1003,7 @@ MonoBehaviour:
   touch: {fileID: 312743014}
   blocks: {fileID: 0}
   back: {fileID: 0}
+  playerSkin: {fileID: 1849388410}
 --- !u!1 &1529127299
 GameObject:
   m_ObjectHideFlags: 3

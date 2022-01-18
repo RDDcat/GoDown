@@ -2,22 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
-    public Canvas MainCanvas;
-    public Canvas gameOverCanvas;
-    public GameObject backGround;
-    
+    // 다른씬
+    public SpawnManager spawnManager;
+    public ObjectManager objectManager;
+
     public Blocks blocks;
     public Player player;
 
+    // 씬
+    public Canvas MainCanvas;
+    public Canvas gameOverCanvas;
+    public GameObject backGround;
+
+    public RectTransform GameOver;
+    
     public long money;
     public long score;
 
+    public float blockSpeed;
+    public int blockHP;
+
     private void Start()
     {
-
+        objectManager = FindObjectOfType<ObjectManager>();
     }
 
     public void GameStart()
@@ -38,10 +49,14 @@ public class GameManager : MonoBehaviour
         // 배경 끄기
         CloseBackGround();
 
+        
         // 게임 시작 사운드
 
-        //
+        // 플레이어 켜기
+        player.SetPlayerOn();
 
+        // 게임 오브젝트 스폰 시작
+        // spawnManager.StartSpawn();
 
     }
 
@@ -77,6 +92,10 @@ public class GameManager : MonoBehaviour
         {
             player = FindObjectOfType<Player>();
         }
+        if(spawnManager == null)
+        {
+            spawnManager = FindObjectOfType<SpawnManager>();
+        }
     }
 
     void CloseMainCanvas()
@@ -87,20 +106,14 @@ public class GameManager : MonoBehaviour
     public void OpenMainCanvas()
     {
         MainCanvas.enabled = true;
-    }
-    public void CloseGameOverCanavs()
-    {
-        gameOverCanvas.enabled = false;
-    }
-
-    public void OpenGameOverCanavs()
-    {
-        gameOverCanvas.enabled = true;
-    }
+    }    
 
     public void GameEnd()
     {
         Debug.Log("게임 엔드");
+        // 게임 오브젝트 스폰 중단
+        spawnManager.StopSpawn();
+
 
         // 게임 종료 보상 계정에 더하기
 
@@ -108,11 +121,8 @@ public class GameManager : MonoBehaviour
         // 최고 스코어 저장
         AccountManager.instance.CheckHighestScore(score);
 
-        // 게임 종료시 변수 초기화
-        GameEndVarInit();
-
-        // 결과창 켜기
-        OpenGameOverCanavs();
+        // 결과창 
+        Invoke("GameOverCanvas", 0.75f); // 배경속도에 맞춰서 올라오면 좋음
 
         // 계정 저장
 
@@ -122,17 +132,27 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void GameOverCanvas()
+    {
+        GameOver.DOAnchorPos(Vector2.zero, 1f);
+    }
+
     public void GameEndVarInit()
     {
         score = 0;
         money = 0;
+
+        // 결과창 옮기기
+        GameOver.position = new Vector2(GameOver.position.x, -2400);
     }
 
     public void GameOverButton()
     {
         UnLoadInGameScene();
         OpenMainCanvas();
-        CloseGameOverCanavs();
+        OpenBackGround();
+        objectManager.OffObjects();
+        GameEndVarInit();
     }
 
     public void UnLoadInGameScene()

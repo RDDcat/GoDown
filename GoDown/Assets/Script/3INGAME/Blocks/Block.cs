@@ -5,26 +5,31 @@ using UnityEngine;
 public class Block : MonoBehaviour
 {
     public int hp;
-    public Blocks blocks;
+    public float speed;
 
     // private
     public bool isBlocksMove = true;
-
-    private void Start()
-    {
-        blocks = FindObjectOfType<Blocks>();
-    }
+    
 
     private void FixedUpdate()
     {
         MoveObject();
+        Destroy();
+    }
+
+    private void Destroy()
+    {
+        if (gameObject.transform.position.y > 40)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     void MoveObject()
     {
         if (isBlocksMove)
         {           
-            transform.Translate(Vector3.up * blocks.speed * Time.deltaTime);
+            transform.Translate(Vector3.up * speed * Time.deltaTime);
             
         }
     }
@@ -39,8 +44,9 @@ public class Block : MonoBehaviour
             // 플레이어의 속도가 블럭 hp보다 크면
             if (p.gauge > hp)
             {
+                Debug.Log("블럭 부서짐");
                 // 블럭이 부서짐
-                
+                gameObject.SetActive(false);
             }
             else
             {
@@ -54,5 +60,11 @@ public class Block : MonoBehaviour
     public float GetAfterGauge(float gauge)
     {
         return gauge - hp;
+    }
+
+    public void SetBlock(int _hp, float _speed)
+    {
+        hp = _hp;
+        speed = _speed;
     }
 }

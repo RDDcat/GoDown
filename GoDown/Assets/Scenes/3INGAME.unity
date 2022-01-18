@@ -167,54 +167,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &172128211
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 172128213}
-  - component: {fileID: 172128212}
-  m_Layer: 0
-  m_Name: ObjectManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &172128212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 172128211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4400771f6957cc24b81efe5ecdccb7c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Block1Prefab: {fileID: 4506178839545596588, guid: 22bbc74ea3c388e4189fea62ffa53b4b, type: 3}
-  Block2Prefab: {fileID: 1499935087728229038, guid: 8fc51c6bf15eeb24590c77805063ce2e, type: 3}
-  coinBlockPrefab: {fileID: 4506178839545596588, guid: 22bbc74ea3c388e4189fea62ffa53b4b, type: 3}
-  layerBlockPrefab: {fileID: 4506178839545596588, guid: 22bbc74ea3c388e4189fea62ffa53b4b, type: 3}
-  coinPrefab: {fileID: 4506178839545596588, guid: 22bbc74ea3c388e4189fea62ffa53b4b, type: 3}
---- !u!4 &172128213
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 172128211}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &185950336
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,6 +196,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74157197e4e5224489f70965c618e5ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  objectManager: {fileID: 0}
   blocks:
   - {fileID: 4506178839545596588, guid: 22bbc74ea3c388e4189fea62ffa53b4b, type: 3}
   - {fileID: 1499935087728229038, guid: 8fc51c6bf15eeb24590c77805063ce2e, type: 3}
@@ -259,6 +213,9 @@ MonoBehaviour:
   - {fileID: 292463897}
   maxSpawnDelay: 0
   curSpawnDelay: 0
+  blockSpeed: 0
+  blockHP: 0
+  stopSpawn: 0
 --- !u!4 &185950338
 Transform:
   m_ObjectHideFlags: 0
@@ -967,7 +924,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 505.741, y: 0}
+  m_AnchoredPosition: {x: 541.1, y: 0}
   m_SizeDelta: {x: 16.691, y: 1599.6328}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1130914030
@@ -1378,7 +1335,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 505.74097, y: 0}
+  m_AnchoredPosition: {x: 541.1, y: 0}
   m_SizeDelta: {x: 16.6911, y: 1599.6328}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1594359622

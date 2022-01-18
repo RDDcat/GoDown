@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     public MoblieTouch touch;
     public Blocks blocks;
     public BackGround2 back;
+    public SpriteRenderer playerSkin;
+
 
     private void Start()
     {
@@ -49,7 +51,8 @@ public class Player : MonoBehaviour
         // 플레이어가 블럭에 부딪혔을때 플레이어는
         if (collision.gameObject.layer == LayerMask.NameToLayer("Object"))
         {
-            Debug.Log("부딪혔다 플레이어가 블럭에 ");
+            // Debug.Log("부딪혔다 플레이어가 블럭에 ");
+
             // 블럭 채력 받아와서 speed 감소
             Block block = collision.gameObject.GetComponent<Block>();
             gauge = block.GetAfterGauge(gauge);
@@ -66,16 +69,20 @@ public class Player : MonoBehaviour
     {
         if(gauge < 0)
         {
-            // 플레이어 사망
-            // 플레이어 고정
-            // 배경 멈춤
-            back.FreezeBackGroundMove();
+            // 플레이어 사망            
+            // 플레이어 끄기
+            SetPlayerOff();
 
-            // 블록 멈춤
-            blocks.FreezeBlocks();
+            // 플레이어 사망 이펙트
+
+
+            // 플레이어 사망 사운드
+
 
             // 터치 중단
             touch.FreezeTouch();
+
+            
 
             // 게임종료
             gameManager.GameEnd();
@@ -84,5 +91,16 @@ public class Player : MonoBehaviour
             Debug.Log("플레이어의 gauge가 다 닳았습니다... (사망)");
 
         }
+    }
+
+    public void SetPlayerOn()
+    {
+        if (playerSkin == null)
+            return;
+        playerSkin.enabled = true;
+    }
+    public void SetPlayerOff()
+    {
+        playerSkin.enabled = false;
     }
 }
