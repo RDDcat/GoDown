@@ -11,9 +11,16 @@ public class AccountManager : MonoBehaviour
 
     void Start()
     {
+        if (instance == null)
+            instance = this;
+
         // 계정 로드
         accountVO = SaveSystem.Load() as AccountVO;
 
+        if(accountVO == null)
+        {
+            accountVO = new AccountVO();
+        }
 
 
 

@@ -6,6 +6,8 @@ public class GameOverCanvas : MonoBehaviour
 {
     public Canvas canvas;
 
+    
+
     public void CloseGameOverCanvas()
     {
         canvas.enabled = false;
