@@ -999,7 +999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  gauge: 2
+  gauge: 5
   touch: {fileID: 312743014}
   blocks: {fileID: 0}
   back: {fileID: 0}

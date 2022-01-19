@@ -11,7 +11,7 @@ public class Block : MonoBehaviour
     public bool isBlocksMove = true;
     
 
-    private void FixedUpdate()
+    private void Update()
     {
         MoveObject();
         Destroy();
@@ -42,11 +42,15 @@ public class Block : MonoBehaviour
             Player p = collision.gameObject.GetComponent<Player>();
 
             // 플레이어의 속도가 블럭 hp보다 크면
-            if (p.gauge > hp)
+            if (p.gauge >= hp)
             {
                 Debug.Log("블럭 부서짐");
                 // 블럭이 부서짐
                 gameObject.SetActive(false);
+
+                // 점수 획득 (일단 +1000)
+                AccountManager.instance.score += 1000;
+
             }
             else
             {
