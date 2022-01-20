@@ -12,8 +12,6 @@ public class SpawnManager : MonoBehaviour
     public float maxSpawnDelay;
     public float curSpawnDelay;
 
-    public float blockSpeed;
-    public int blockHP;
     string[] BlockName;
 
     public bool stopSpawn;
@@ -25,8 +23,7 @@ public class SpawnManager : MonoBehaviour
         {
             objectManager = FindObjectOfType<ObjectManager>();
             gameManager = FindObjectOfType<GameManager>();
-            blockSpeed = gameManager.blockSpeed;
-            blockHP = gameManager.blockHP;
+            
         }
         catch
         {
@@ -63,7 +60,8 @@ public class SpawnManager : MonoBehaviour
 
         GameObject obj = objectManager.MakeObj(BlockName[ranBlock]);
         obj.transform.position = spawnPoints[ranPoint].position;
-        obj.GetComponent<Block>().SetBlock(blockHP, blockSpeed);
+        obj.GetComponent<Block>().SetBlock(gameManager.blockHP, gameManager.blockSpeed);
+        
     }
 
     public void StopSpawn()

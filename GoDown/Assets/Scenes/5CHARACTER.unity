@@ -998,12 +998,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdccd0c77310f664a950a88a10ccd548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 1232602396}
   gameManager: {fileID: 0}
-  gauge: 2
-  touch: {fileID: 312743014}
   blocks: {fileID: 0}
+  gauge: 10
+  touch: {fileID: 312743014}
   back: {fileID: 0}
   playerSkin: {fileID: 1849388410}
+  gaugelimit: 200
 --- !u!1 &1529127299
 GameObject:
   m_ObjectHideFlags: 3

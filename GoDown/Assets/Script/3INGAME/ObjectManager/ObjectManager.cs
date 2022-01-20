@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ObjectManager : MonoBehaviour
 {
+    public Blocks blocks;
+
     public GameObject Block1Prefab;
     public GameObject Block2Prefab;
     public GameObject coinBlock1Prefab;
@@ -24,7 +26,7 @@ public class ObjectManager : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("오브젝트 풀링");
+        // Debug.Log("오브젝트 풀링");
         Block1 = new GameObject[30];
         Block2 = new GameObject[30];
 
@@ -34,41 +36,62 @@ public class ObjectManager : MonoBehaviour
         coin = new GameObject[20];
 
         Generate();
+        blocks.MappingAllBlocks();        
+    }
+
+    public void AllFade()
+    {
+        Debug.Log("가리기");
+        for (int i = 0; i < Block1.Length; i++)
+        {   
+            Block1[i].SetActive(false);
+        }
+        for (int i = 0; i < Block2.Length; i++)
+        {
+            Block2[i].SetActive(false);
+        }
+
+        for (int i = 0; i < coinBlock1.Length; i++)
+        {
+            coinBlock1[i].SetActive(false);
+        }
+        for (int i = 0; i < coinBlock2.Length; i++)
+        {
+            coinBlock2[i].SetActive(false);
+        }
+
+        for (int i = 0; i < coin.Length; i++)
+        {
+            coin[i].SetActive(false);
+        }
     }
 
     void Generate()
     {
         if (!isGenerated)
         {
-            Debug.Log("생성");
+            // Debug.Log("생성");
             for (int i = 0; i < Block1.Length; i++)
             {
-                Debug.Log("Block1 생성");
                 Block1[i] = Instantiate(Block1Prefab);
-                Block1[i].SetActive(false);
             }
             for (int i = 0; i < Block2.Length; i++)
             {
-                Debug.Log("Block2 생성");
                 Block2[i] = Instantiate(Block2Prefab);
-                Block2[i].SetActive(false);
             }
 
             for (int i = 0; i < coinBlock1.Length; i++)
             {
                 coinBlock1[i] = Instantiate(coinBlock1Prefab);
-                coinBlock1[i].SetActive(false);
             }
             for (int i = 0; i < coinBlock2.Length; i++)
             {
                 coinBlock2[i] = Instantiate(coinBlock2Prefab);
-                coinBlock2[i].SetActive(false);
             }
 
             for (int i = 0; i < coin.Length; i++)
             {
                 coin[i] = Instantiate(coinPrefab);
-                coin[i].SetActive(false);
             }
             isGenerated = true;
         }

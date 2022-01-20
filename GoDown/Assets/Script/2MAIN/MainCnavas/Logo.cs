@@ -30,7 +30,7 @@ public class Logo : MonoBehaviour
         }
         else
         {
-            Debug.Log("픽스드 업데이트 실행 갯수");
+            //Debug.Log("픽스드 업데이트 실행 갯수");
         }
     }
 
@@ -38,13 +38,13 @@ public class Logo : MonoBehaviour
     {
         if (!isToggle)
         {
-            Debug.Log("아래로");
+            // Debug.Log("아래로");
             logo.DOAnchorPos(new Vector2(0, 300), 5f);
             isToggle = true;
         }
         else
         {
-            Debug.Log("위로");
+            // Debug.Log("위로");
             logo.DOAnchorPos(new Vector2(0, 330), 5f);
             isToggle = false;
         }

@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class BackGround : MonoBehaviour
 {
+    public Blocks blocks;
+
     public GameObject[] BackGrounds;
     public float BackGroundSpeed;
 
+    private void Start()
+    {
+        blocks = FindObjectOfType<Blocks>();
+    }
 
     private void Update()
     {        

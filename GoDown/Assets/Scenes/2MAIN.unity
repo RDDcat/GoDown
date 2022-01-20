@@ -780,7 +780,7 @@ MonoBehaviour:
   money: 0
   score: 0
   blockSpeed: 10
-  blockHP: 1
+  blockHP: 5
 --- !u!4 &665693856
 Transform:
   m_ObjectHideFlags: 0

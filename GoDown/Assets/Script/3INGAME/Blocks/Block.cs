@@ -24,6 +24,12 @@ public class Block : MonoBehaviour
         Destroy();
     }
 
+    public void SetSpeed(float _speed)
+    {
+        Debug.Log("ºí·°º° ¼Óµµº¯È­ °¹¼ö");
+        speed = _speed;
+    }
+
     private void Destroy()
     {
         if (gameObject.transform.position.y > 40)
@@ -36,7 +42,8 @@ public class Block : MonoBehaviour
     {
         if (isBlocksMove)
         {
-            rigid.AddForce(Vector3.up * speed * Time.deltaTime);            
+            rigid.AddForce(Vector3.up * speed );
+            //* Time.deltaTime
         }
     }
 
@@ -56,6 +63,7 @@ public class Block : MonoBehaviour
 
                 // Á¡¼ö È¹µæ (ÀÏ´Ü +1000)
                 AccountManager.instance.score += 1000;
+
 
             }
             else

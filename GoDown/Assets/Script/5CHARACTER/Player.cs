@@ -1,26 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class Player : MonoBehaviour
 {
+    public CinemachineVirtualCamera camera;
+
     public GameManager gameManager;
+    public Blocks blocks;
+
     public float gauge;
     public MoblieTouch touch;
-    public Blocks blocks;
     public BackGround2 back;
     public SpriteRenderer playerSkin;
 
+    public float gaugelimit;
+    float guide;
+    bool isSpeedDelay;
 
     private void Start()
     {
+        guide = gaugelimit / 9f;
         GameManagerMapping();
         Mapping();
     }
 
     private void FixedUpdate()
     {
+        if (!isSpeedDelay)
+        {
+            StartCoroutine(SpeedUP());
+        }
+        
+    }
 
+    IEnumerator SpeedUP()
+    {
+        isSpeedDelay = true;
+        if(gauge < gaugelimit)
+        {
+            gauge += 5 * Time.deltaTime;
+            blocks.speed = gauge;
+            float container = gauge / guide;
+            camera.m_Lens.OrthographicSize = 10 + container;
+        }        
+        Debug.Log(gauge + "현재 게이지");
+        yield return new WaitForSeconds(0.2f);
+        isSpeedDelay = false;
     }
 
 
