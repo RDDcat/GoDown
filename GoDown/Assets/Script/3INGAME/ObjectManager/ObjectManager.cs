@@ -71,7 +71,7 @@ public class ObjectManager : MonoBehaviour
                 coin[i].SetActive(false);
             }
             isGenerated = true;
-        }        
+        }
     }
 
     public void OffObjects()

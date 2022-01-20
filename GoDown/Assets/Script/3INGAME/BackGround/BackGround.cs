@@ -8,7 +8,7 @@ public class BackGround : MonoBehaviour
     public float BackGroundSpeed;
 
 
-    private void FixedUpdate()
+    private void Update()
     {        
         MoveObject();
     }
@@ -18,19 +18,10 @@ public class BackGround : MonoBehaviour
         foreach (GameObject obj in BackGrounds)
         {
             obj.transform.Translate(Vector3.up * BackGroundSpeed * Time.deltaTime);
+            if (obj.gameObject.transform.position.y > 38.35f)
+            {
+                obj.gameObject.transform.position = new Vector2(obj.gameObject.transform.position.x, -76.8f);
+            }
         }
-    }
-
-    public void SwapObject()
-    {
-        if(BackGrounds[0].transform.position.y > BackGrounds[1].transform.position.y)
-        {
-            BackGrounds[0].gameObject.transform.position = new Vector3(0, BackGrounds[1].transform.position.y - 38.4f, 0);
-        }
-        else
-        {
-            BackGrounds[1].gameObject.transform.position = new Vector3(0, BackGrounds[0].transform.position.y - 38.4f, 0);
-        }
-    }
-    
+    }    
 }

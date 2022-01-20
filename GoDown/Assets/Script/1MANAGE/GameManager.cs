@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 
@@ -19,6 +20,8 @@ public class GameManager : MonoBehaviour
     public GameObject backGround;
 
     public RectTransform GameOver;
+
+    public Text scoreText;
     
     public long money;
     public long score;
@@ -114,6 +117,9 @@ public class GameManager : MonoBehaviour
         // 게임 오브젝트 스폰 중단
         spawnManager.StopSpawn();
 
+        // 결과 텍스트 지정
+        SetResultText();
+
 
         // 게임 종료 보상 계정에 더하기
 
@@ -122,7 +128,7 @@ public class GameManager : MonoBehaviour
         AccountManager.instance.CheckHighestScore(score);
 
         // 결과창 
-        Invoke("GameOverCanvas", 0.75f); // 배경속도에 맞춰서 올라오면 좋음
+        Invoke("GameOverCanvas", 0.45f); // 배경속도에 맞춰서 올라오면 좋음
 
         // 계정 저장
 
@@ -130,6 +136,11 @@ public class GameManager : MonoBehaviour
         // 게임 종료 이펙트
 
 
+    }
+
+    public void SetResultText()
+    {
+        scoreText.text = AccountManager.instance.score.ToString();
     }
 
     public void GameOverCanvas()
@@ -141,6 +152,9 @@ public class GameManager : MonoBehaviour
     {
         score = 0;
         money = 0;
+
+        // 계정 스코어 초기화
+        AccountManager.instance.score = 0;
 
         // 결과창 옮기기
         GameOver.position = new Vector2(GameOver.position.x, -2400);
