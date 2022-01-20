@@ -19,6 +19,12 @@ public class Player : MonoBehaviour
 
     }
 
+    private void FixedUpdate()
+    {
+
+    }
+
+
     void GameManagerMapping()
     {
         try

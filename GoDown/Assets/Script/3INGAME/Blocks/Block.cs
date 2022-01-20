@@ -7,9 +7,16 @@ public class Block : MonoBehaviour
     public int hp;
     public float speed;
 
+    public Rigidbody2D rigid;
+
     // private
     public bool isBlocksMove = true;
-    
+
+    private void Start()
+    {
+        rigid = GetComponent<Rigidbody2D>();
+    }
+
 
     private void Update()
     {
@@ -28,9 +35,8 @@ public class Block : MonoBehaviour
     void MoveObject()
     {
         if (isBlocksMove)
-        {           
-            transform.Translate(Vector3.up * speed * Time.deltaTime);
-            
+        {
+            rigid.AddForce(Vector3.up * speed * Time.deltaTime);            
         }
     }
 

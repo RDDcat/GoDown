@@ -730,7 +730,7 @@ MonoBehaviour:
   m_Follow: {fileID: 312743013}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 10
+    OrthographicSize: 19
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -999,7 +999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  gauge: 5
+  gauge: 2
   touch: {fileID: 312743014}
   blocks: {fileID: 0}
   back: {fileID: 0}
