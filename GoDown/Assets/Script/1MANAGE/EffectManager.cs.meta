@@ -3,7 +3,12 @@ guid: 71a9e233ab2173246bee314ff856de9d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - SlimeDieEffectPrefab: {fileID: 5672445368958358465, guid: 04b8328b9954c48428ed53c884ef6979, type: 3}
+  - SlimeSpeed1EffectPrefab: {fileID: 8303752739778803492, guid: 47daded2c23b3f34fa519ae1e256858a, type: 3}
+  - BlockBreak1EffectPrefab: {fileID: 3313811824694624361, guid: 7f5c96dd1924a1745968a63e66cfdd65, type: 3}
+  - BlockBreak2EffectPrefab: {fileID: 6616582965373084340, guid: 4de41769d5810ef49b48f642d9f76aa4, type: 3}
+  - BlockBreak3EffectPrefab: {fileID: 3392392937193216678, guid: aa8c62db026baed4699cb28f697b2895, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
