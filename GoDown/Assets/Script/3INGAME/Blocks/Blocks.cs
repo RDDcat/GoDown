@@ -8,6 +8,7 @@ public class Blocks : MonoBehaviour
 
     public Block[] block;
 
+
     float _speed;
     public float speed
     {
@@ -39,7 +40,7 @@ public class Blocks : MonoBehaviour
             }
             
         }
-        
+
     }
     
 

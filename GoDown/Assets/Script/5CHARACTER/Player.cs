@@ -9,19 +9,34 @@ public class Player : MonoBehaviour
 
     public GameManager gameManager;
     public Blocks blocks;
+    public BackGround backGround;
+    public Gauge gaugeSlider;
 
-    public float gauge;
+    public float _gauge;
+    public float gauge
+    {
+        get
+        {
+            return _gauge;
+        }
+        set
+        {
+            _gauge = value;
+            gaugeSlider.SetGaugeSlider(value);
+        }
+    }
     public MoblieTouch touch;
     public BackGround2 back;
     public SpriteRenderer playerSkin;
 
     public float gaugelimit;
     float guide;
+    float guide2;
     bool isSpeedDelay;
 
     private void Start()
     {
-        guide = gaugelimit / 9f;
+        guide = gaugelimit / 9f;        
         GameManagerMapping();
         Mapping();
     }
@@ -44,6 +59,12 @@ public class Player : MonoBehaviour
             blocks.speed = gauge;
             float container = gauge / guide;
             camera.m_Lens.OrthographicSize = 10 + container;
+
+            // camera.
+
+            // 배경 속도            
+            backGround.BackGroundSpeed = gauge;           
+
         }        
         Debug.Log(gauge + "현재 게이지");
         yield return new WaitForSeconds(0.2f);
@@ -70,6 +91,7 @@ public class Player : MonoBehaviour
         {
             blocks = FindObjectOfType<Blocks>();
             back = FindObjectOfType<BackGround2>();
+            backGround = FindObjectOfType<BackGround>();
         }
         catch
         {

@@ -21,12 +21,12 @@ public class BackGround : MonoBehaviour
 
     private void MoveObject()
     {
-        foreach (GameObject obj in BackGrounds)
+        for(int i =0; i< BackGrounds.Length; i++)
         {
-            obj.transform.Translate(Vector3.up * BackGroundSpeed * Time.deltaTime);
-            if (obj.gameObject.transform.position.y > 38.35f)
+            BackGrounds[i].transform.Translate(Vector3.up * BackGroundSpeed * Time.deltaTime / 2f);
+            if (BackGrounds[i].gameObject.transform.position.y > 38.35f)
             {
-                obj.gameObject.transform.position = new Vector2(obj.gameObject.transform.position.x, -76.8f);
+                BackGrounds[i].gameObject.transform.position = new Vector2(BackGrounds[i].gameObject.transform.position.x, -76.8f);
             }
         }
     }    

@@ -69,7 +69,7 @@ public class Block : MonoBehaviour
             else
             {
                 // 블럭이 안부서짐
-
+                gameObject.SetActive(false);
             }
 
         }
