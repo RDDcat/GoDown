@@ -33,7 +33,7 @@ public class Blocks : MonoBehaviour
     {
         for(int i=0;i < block.Length; i++)
         {
-            Debug.Log("블럭 스피드 설정 변화 명령어 갯수 카운팅");
+            // Debug.Log("블럭 스피드 설정 변화 명령어 갯수 카운팅");
             if (block[i].isActiveAndEnabled)
             {
                 block[i].SetSpeed(__speed);

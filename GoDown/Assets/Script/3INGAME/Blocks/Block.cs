@@ -26,7 +26,7 @@ public class Block : MonoBehaviour
 
     public void SetSpeed(float _speed)
     {
-        Debug.Log("블럭별 속도변화 갯수");
+        // Debug.Log("블럭별 속도변화 갯수");
         speed = _speed;
     }
 

@@ -45,30 +45,39 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         if (!isSpeedDelay)
-        {
+        {            
             StartCoroutine(SpeedUP());
         }
         
-    }
+    }        
+
 
     IEnumerator SpeedUP()
     {
         isSpeedDelay = true;
-        if(gauge < gaugelimit)
+        Debug.Log("speed UP 실행");
+        if (gauge < gaugelimit)
         {
-            gauge += 5 * Time.deltaTime;
+            gauge += 5 * Time.deltaTime; 
+            
+            yield return new WaitForSeconds(0.05f);
+            Debug.Log("0.05초 지남 1");
             blocks.speed = gauge;
+            yield return new WaitForSeconds(0.05f);
+            Debug.Log("0.05초 지남 2");
+            // camera.
             float container = gauge / guide;
             camera.m_Lens.OrthographicSize = 10 + container;
-
-            // camera.
-
+            yield return new WaitForSeconds(0.05f);
+            Debug.Log("0.05초 지남 3");
+            
             // 배경 속도            
-            backGround.BackGroundSpeed = gauge;           
+            backGround.BackGroundSpeed = gauge;
+            yield return new WaitForSeconds(0.05f);
+            Debug.Log("0.05초 지남 4");
 
         }        
-        Debug.Log(gauge + "현재 게이지");
-        yield return new WaitForSeconds(0.2f);
+        
         isSpeedDelay = false;
     }
 
