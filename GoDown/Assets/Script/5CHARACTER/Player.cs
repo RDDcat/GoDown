@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
         set
         {
             _gauge = value;
+            Debug.Log("게이지 호출 갯수");
             gaugeSlider.SetGaugeSlider(value);
         }
     }
