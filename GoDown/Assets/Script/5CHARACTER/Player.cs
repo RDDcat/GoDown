@@ -214,7 +214,8 @@ public class Player : MonoBehaviour
     {
         if(gauge < 0)
         {
-            // 플레이어 사망            
+            // 플레이어 사망
+            GameObject Dead = EffectManager.SpawnFromPool("Dead", playerSkin.transform.position);
             // 플레이어 끄기
             SetPlayerOff();
 
