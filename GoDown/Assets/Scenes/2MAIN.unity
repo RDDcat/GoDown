@@ -780,7 +780,7 @@ MonoBehaviour:
   scoreText: {fileID: 734385423}
   goldText: {fileID: 1441380266}
   multyplyText: {fileID: 743988745}
-  blockSpeed: 2
+  blockSpeed: 3
   blockSpeedLimit: 10
   blockAccel: 1
   blockHP: 1

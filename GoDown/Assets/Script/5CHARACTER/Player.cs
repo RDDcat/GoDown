@@ -140,14 +140,19 @@ public class Player : MonoBehaviour
     {
         isFever = true;
         Debug.Log("피버타임 발동 Check 1");
+
         yield return new WaitForSeconds(2.5f);
         Debug.Log("피버타임 발동 Check 2");
+
         yield return new WaitForSeconds(2.5f);
         Debug.Log("피버타임 발동 Check 3");
+
         yield return new WaitForSeconds(2.5f);
         Debug.Log("피버타임 발동 Check 4");
+
         yield return new WaitForSeconds(2.5f);
-        Debug.Log("피버타임 발동 Check 5");        
+        Debug.Log("피버타임 끝");       
+        
         gauge = gauge / 3;
         isFever = false;
         isSpeedDelay = false;
@@ -191,6 +196,7 @@ public class Player : MonoBehaviour
             // 블럭 채력 받아와서 speed 감소
             if (!isFever)
             {
+                Debug.Log("블럭 업데이트");
                 Block block = collision.gameObject.GetComponent<Block>();
                 gauge = block.GetAfterGauge(gauge);
             }

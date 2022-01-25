@@ -76,11 +76,19 @@ public class AccountManager : MonoBehaviour
             instance = this;
 
         // 계정 로드
-        accountVO = SaveSystem.Load() as AccountVO;
+        accountVO = SaveSystem.Load("account") as AccountVO;
 
         if(accountVO == null)
         {
+            Debug.Log("어카운트 브이오 생성");
             accountVO = new AccountVO();
+            accountVO.multiplyGold = 1;
+            accountVO.blockSpeed = 3;
+            accountVO.blockSpeedLimit = 10;
+            accountVO.blockAccel = 1;
+            accountVO.playerSpeed = 5;
+            accountVO.blockResistance = 0;
+            SaveSystem.Save("account", accountVO);
         }
 
         // 디버그
@@ -101,6 +109,9 @@ public class AccountManager : MonoBehaviour
     }
 
 
-
+    private void OnApplicationQuit()
+    {
+        SaveSystem.Save("account", accountVO);
+    }
 
 }

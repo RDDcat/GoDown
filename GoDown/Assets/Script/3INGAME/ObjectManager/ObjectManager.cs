@@ -41,7 +41,6 @@ public class ObjectManager : MonoBehaviour
 
     public void AllFade()
     {
-        Debug.Log("°¡¸®±â");
         for (int i = 0; i < Block1.Length; i++)
         {   
             Block1[i].SetActive(false);

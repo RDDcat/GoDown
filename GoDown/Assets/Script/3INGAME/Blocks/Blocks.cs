@@ -46,7 +46,7 @@ public class Blocks : MonoBehaviour
 
     public void MappingAllBlocks()
     {
-        Debug.Log("ºí·Ï ¸ÊÇÎ");
+        // Debug.Log("ºí·Ï ¸ÊÇÎ");
 
         block = FindObjectsOfType<Block>();
 

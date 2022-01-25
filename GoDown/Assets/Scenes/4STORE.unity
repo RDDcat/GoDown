@@ -2004,7 +2004,7 @@ MonoBehaviour:
   blockSpeedLimit: 0.2
   blockAccel: 0.001
   blockResistance: 1
-  playerSpeed: 0.01
+  playerSpeed: 0.005
   multiplyGold: 0.002
 --- !u!1 &1840326857
 GameObject:
