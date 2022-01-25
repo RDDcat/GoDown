@@ -6,12 +6,10 @@ public class Block : MonoBehaviour
 {
     public int hp;
     public float speed;
-<<<<<<< HEAD
     public int score;
     public float resistance;
-=======
+
     public int blockLv;
->>>>>>> [UPDATE] 이펙트 매니저, 이펙트 프리펩 업데이트, 앱이미지 추가
 
 
     // private
@@ -73,13 +71,13 @@ public class Block : MonoBehaviour
                 switch (blockLv)
                 {
                     case 0 :
-                        GameObject Break1 = EffectManager.SpawnFromPool("Break1", rigid.position);
+                        // GameObject Break1 = EffectManager.SpawnFromPool("Break1", rigid.position);
                         break;
                     case 1:
-                        GameObject Break2 = EffectManager.SpawnFromPool("Break2", rigid.position);
+                        // GameObject Break2 = EffectManager.SpawnFromPool("Break2", rigid.position);
                         break;
                     case 2:
-                        GameObject Break3 = EffectManager.SpawnFromPool("Break3", rigid.position);
+                        // GameObject Break3 = EffectManager.SpawnFromPool("Break3", rigid.position);
                         break;
                 }
                 
