@@ -140,6 +140,7 @@ public class Player : MonoBehaviour
     {
         isFever = true;
         Debug.Log("피버타임 발동 Check 1");
+        GameObject Speed1 = EffectManager.SpawnFromPool("Speed1", playerSkin.transform.position);
 
         yield return new WaitForSeconds(2.5f);
         Debug.Log("피버타임 발동 Check 2");

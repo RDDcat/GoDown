@@ -9,8 +9,6 @@ public class Block : MonoBehaviour
     public int score;
     public float resistance;
 
-    public GameObject BlockPrefab;
-
     public int blockLv;
 
 
@@ -72,14 +70,17 @@ public class Block : MonoBehaviour
                 // ºí·° ÆÄ±« ÀÌÆåÆ®
                 switch (blockLv)
                 {
-                    case 0 :
-                        // GameObject Break1 = EffectManager.SpawnFromPool("Break1", rigid.position);
+                    case -1:
+                        GameObject Break01 = EffectManager.SpawnFromPool("Break01", gameObject.transform.position);
                         break;
-                    case 1:
-                        // GameObject Break2 = EffectManager.SpawnFromPool("Break2", rigid.position);
+                    case 1 :
+                        GameObject Break1 = EffectManager.SpawnFromPool("Break1", gameObject.transform.position);
                         break;
                     case 2:
-                        // GameObject Break3 = EffectManager.SpawnFromPool("Break3", rigid.position);
+                        GameObject Break2 = EffectManager.SpawnFromPool("Break2", gameObject.transform.position);
+                        break;
+                    case 3:
+                        GameObject Break3 = EffectManager.SpawnFromPool("Break3", gameObject.transform.position);
                         break;
                 }
                 

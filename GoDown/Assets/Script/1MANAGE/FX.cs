@@ -7,7 +7,7 @@ public class FX : MonoBehaviour
     private void OnEnable()
     {
         //활성화시 타이머 작동
-        Invoke(nameof(DeactiveDelay), 3);
+        Invoke(nameof(DeactiveDelay), 10);
     }
 
     void DeactiveDelay() => gameObject.SetActive(false);

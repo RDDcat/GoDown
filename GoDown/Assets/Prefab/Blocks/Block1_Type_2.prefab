@@ -148,6 +148,6 @@ MonoBehaviour:
   speed: 0
   score: 0
   resistance: 0
-  BlockPrefab: {fileID: 3313811824694624361, guid: 7f5c96dd1924a1745968a63e66cfdd65, type: 3}
-  blockLv: 0
+  BreakPrefab: {fileID: 3313811824694624361, guid: 7f5c96dd1924a1745968a63e66cfdd65, type: 3}
+  blockLv: 1
   isBlocksMove: 1
