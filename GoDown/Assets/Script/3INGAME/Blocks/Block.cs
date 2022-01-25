@@ -9,6 +9,8 @@ public class Block : MonoBehaviour
     public int score;
     public float resistance;
 
+    public GameObject BlockPrefab;
+
     public int blockLv;
 
 
