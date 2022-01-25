@@ -442,7 +442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3313811824694624361, guid: 7f5c96dd1924a1745968a63e66cfdd65, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3313811824694624364, guid: 7f5c96dd1924a1745968a63e66cfdd65, type: 3}
       propertyPath: m_RootOrder
@@ -917,7 +917,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5672445368958358465, guid: 04b8328b9954c48428ed53c884ef6979, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5672445368958358478, guid: 04b8328b9954c48428ed53c884ef6979, type: 3}
       propertyPath: m_RootOrder
@@ -1680,7 +1680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6616582965373084340, guid: 4de41769d5810ef49b48f642d9f76aa4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6616582965529321306, guid: 4de41769d5810ef49b48f642d9f76aa4, type: 3}
       propertyPath: m_IsActive
@@ -1926,6 +1926,10 @@ PrefabInstance:
     - target: {fileID: 3392392937193216678, guid: aa8c62db026baed4699cb28f697b2895, type: 3}
       propertyPath: m_Name
       value: FX_BlockBreak LV3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392392937193216678, guid: aa8c62db026baed4699cb28f697b2895, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa8c62db026baed4699cb28f697b2895, type: 3}
@@ -2314,7 +2318,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8303752739778803492, guid: 47daded2c23b3f34fa519ae1e256858a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8303752740348952940, guid: 47daded2c23b3f34fa519ae1e256858a, type: 3}
       propertyPath: CollisionModule.m_Planes.Array.data[0]

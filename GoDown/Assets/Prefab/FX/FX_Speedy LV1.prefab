@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8303752739778803491}
   - component: {fileID: 8303752739778803490}
   - component: {fileID: 8303752739778803493}
+  - component: {fileID: 4780646676547845888}
   m_Layer: 0
   m_Name: FX_Speedy LV1
   m_TagString: Untagged
@@ -4805,6 +4806,18 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &4780646676547845888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8303752739778803492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a69e798cafd0824c851c160c71bf8ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8303752740348952942
 GameObject:
   m_ObjectHideFlags: 0
@@ -9594,7 +9607,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 1
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0

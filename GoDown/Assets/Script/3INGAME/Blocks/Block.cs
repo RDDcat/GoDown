@@ -6,8 +6,12 @@ public class Block : MonoBehaviour
 {
     public int hp;
     public float speed;
+<<<<<<< HEAD
     public int score;
     public float resistance;
+=======
+    public int blockLv;
+>>>>>>> [UPDATE] ì´í™íŠ¸ ë§¤ë‹ˆì €, ì´í™íŠ¸ í”„ë¦¬í© ì—…ë°ì´íŠ¸, ì•±ì´ë¯¸ì§€ ì¶”ê°€
 
 
     // private
@@ -65,6 +69,20 @@ public class Block : MonoBehaviour
                 Debug.Log("ºí·° ºÎ¼­Áü");
                 // ºí·°ÀÌ ºÎ¼­Áü
                 gameObject.SetActive(false);
+                // ºí·° ÆÄ±« ÀÌÆåÆ®
+                switch (blockLv)
+                {
+                    case 0 :
+                        GameObject Break1 = EffectManager.SpawnFromPool("Break1", rigid.position);
+                        break;
+                    case 1:
+                        GameObject Break2 = EffectManager.SpawnFromPool("Break2", rigid.position);
+                        break;
+                    case 2:
+                        GameObject Break3 = EffectManager.SpawnFromPool("Break3", rigid.position);
+                        break;
+                }
+                
 
                 // Á¡¼ö È¹µæ (ÀÏ´Ü +1000)
                 AccountManager.instance.score += score;

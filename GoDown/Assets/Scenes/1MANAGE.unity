@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71a9e233ab2173246bee314ff856de9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   SlimeDieEffectPrefab: {fileID: 5672445368958358465, guid: 04b8328b9954c48428ed53c884ef6979, type: 3}
   SlimeSpeed1EffectPrefab: {fileID: 8303752739778803492, guid: 47daded2c23b3f34fa519ae1e256858a, type: 3}
   BlockBreak1EffectPrefab: {fileID: 3313811824694624361, guid: 7f5c96dd1924a1745968a63e66cfdd65, type: 3}
@@ -399,6 +400,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705958849}
   m_CullTransparentMesh: 1
+=======
+  pools:
+  - tag: Break1
+    prefab: {fileID: 3313811824694624361, guid: 7f5c96dd1924a1745968a63e66cfdd65, type: 3}
+    size: 15
+  - tag: Break2
+    prefab: {fileID: 6616582965373084340, guid: 4de41769d5810ef49b48f642d9f76aa4, type: 3}
+    size: 15
+  - tag: Break3
+    prefab: {fileID: 3392392937193216678, guid: aa8c62db026baed4699cb28f697b2895, type: 3}
+    size: 15
+  - tag: Dead
+    prefab: {fileID: 5672445368958358465, guid: 04b8328b9954c48428ed53c884ef6979, type: 3}
+    size: 1
+  - tag: Speed1
+    prefab: {fileID: 8303752739778803492, guid: 47daded2c23b3f34fa519ae1e256858a, type: 3}
+    size: 1
+>>>>>>> [UPDATE] 이펙트 매니저, 이펙트 프리펩 업데이트, 앱이미지 추가
 --- !u!1 &713176762
 GameObject:
   m_ObjectHideFlags: 0
