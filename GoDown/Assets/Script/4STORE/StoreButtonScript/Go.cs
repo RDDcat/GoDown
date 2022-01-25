@@ -20,23 +20,5 @@ public class Go : MonoBehaviour
         SceneManager.LoadSceneAsync("2MAIN", LoadSceneMode.Additive);
     }
 
-
-    public void GoUpgrade()
-    {
-        // 레거시
-        // 업그레이드 창으로 가기
-        // 업그레이드 창으로 가기 버튼 끄기
-        // 피버 업그레이드 창으로가기 버튼 켜기
-        upgradeCanvas.enabled = true;
-        feverCanvas.enabled = false;
-    }
-    public void GoFever()
-    {
-        // 레거시
-        // 피버 업그레이드 창으로 가기
-        // 피버 업그레이드 창으로 가기 버튼 끄기
-        // 업그레이드 창으로가기 버튼 켜기
-        upgradeCanvas.enabled = false;
-        feverCanvas.enabled = true;
-    }
+    
 }

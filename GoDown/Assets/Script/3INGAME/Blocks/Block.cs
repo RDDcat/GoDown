@@ -6,15 +6,16 @@ public class Block : MonoBehaviour
 {
     public int hp;
     public float speed;
+    public int score;
+    public float resistance;
 
-    public Rigidbody2D rigid;
 
     // private
     public bool isBlocksMove = true;
 
     private void Start()
     {
-        rigid = GetComponent<Rigidbody2D>();
+        // rigid = GetComponent<Rigidbody2D>();
     }
 
 
@@ -40,11 +41,15 @@ public class Block : MonoBehaviour
 
     void MoveObject()
     {
-        if (isBlocksMove)
+        if (gameObject.activeSelf)
         {
-            rigid.AddForce(Vector3.up * speed );
-            //* Time.deltaTime
-        }
+            if (isBlocksMove)
+            {
+                // rigid.AddForce(Vector3.up * speed );
+                transform.Translate(0, speed * 0.008f, 0);
+                //* Time.deltaTime
+            }
+        }        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -62,7 +67,7 @@ public class Block : MonoBehaviour
                 gameObject.SetActive(false);
 
                 // Á¡¼ö È¹µæ (ÀÏ´Ü +1000)
-                AccountManager.instance.score += 1000;
+                AccountManager.instance.score += score;
 
 
             }
@@ -77,12 +82,16 @@ public class Block : MonoBehaviour
 
     public float GetAfterGauge(float gauge)
     {
-        return gauge - hp;
+        float damage = hp * resistance;
+        return gauge - damage;
     }
 
-    public void SetBlock(int _hp, float _speed)
+    public void SetBlock(int _hp, float _speed, int _score, float _resistance)
     {
         hp = _hp;
         speed = _speed;
+        score = _score;
+        resistance = _resistance / (_resistance + 2500);
+
     }
 }

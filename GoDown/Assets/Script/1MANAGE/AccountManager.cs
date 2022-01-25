@@ -10,8 +10,11 @@ public class AccountManager : MonoBehaviour
     public AccountVO accountVO;
 
     public Text scoreText;
+    public Text goldText;
 
     public long _score;
+    public long _gold;
+    public float multiplyGold;
 
     public long score
     {
@@ -25,10 +28,45 @@ public class AccountManager : MonoBehaviour
             SetScoreText(_score);
         }
     }
-    
-    public void SetScoreText(long _score)
+
+    public long gold
     {
-        scoreText.text = _score.ToString();
+        get
+        {
+            return _gold;
+        }
+        set
+        {
+            _gold = value;
+        }
+    }
+
+    public void InitVariables()
+    {
+        // 게임 종료시 변수 초기화
+        score = 0;
+        gold = 0;
+    }
+
+    public void SaveGold()
+    {
+        accountVO.gold += _gold;
+    }
+
+    public long GetGold()
+    {
+        long result = (long)Mathf.Sqrt(score) + _gold;
+        return result;
+    }
+
+    public void SetScoreText(long __score)
+    {
+        scoreText.text = __score.ToString();
+    }
+
+    public void SetGoldText(long __gold)
+    {
+        goldText.text = __gold.ToString();
     }
 
 
@@ -50,9 +88,10 @@ public class AccountManager : MonoBehaviour
 
     }
 
-    public void AddMoney(long money)
+    public void SetGold()
     {
-        accountVO.money += money;
+        accountVO.gold = (long)(gold * accountVO.multiplyGold);
+
     }
 
     public void CheckHighestScore(long score)
@@ -60,4 +99,8 @@ public class AccountManager : MonoBehaviour
         if (accountVO.highestScore < score)
             accountVO.highestScore = score;
     }
+
+
+
+
 }

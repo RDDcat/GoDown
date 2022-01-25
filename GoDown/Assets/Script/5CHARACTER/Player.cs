@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     public CinemachineVirtualCamera camera;
 
-    public GameManager gameManager;
+    public GameManager gameManager;    
     public Blocks blocks;
     public BackGround backGround;
     public Gauge gaugeSlider;
@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
         set
         {
             _gauge = value;
-            Debug.Log("게이지 호출 갯수");
+            // Debug.Log("게이지 호출 갯수");
             gaugeSlider.SetGaugeSlider(value);
         }
     }
@@ -31,56 +31,127 @@ public class Player : MonoBehaviour
     public SpriteRenderer playerSkin;
 
     public float gaugelimit;
+    float accel;
     float guide;
     float guide2;
     bool isSpeedDelay;
+    bool isFever;
 
     private void Start()
-    {
-        guide = gaugelimit / 9f;        
+    {        
         GameManagerMapping();
         Mapping();
+        gaugelimit = gameManager.blockSpeedLimit;
+        accel = gameManager.blockAccel;
+        guide = gaugelimit / 9f;
     }
 
     private void FixedUpdate()
     {
-        if (!isSpeedDelay)
-        {            
-            StartCoroutine(SpeedUP());
+        if (gameManager.onPlay)
+        {
+            if (!isSpeedDelay)
+            {
+                isSpeedDelay = true;
+                if (gauge < gaugelimit)
+                {
+                    SetGauge();
+                    BlockSpeedGauge();
+                    Invoke("SetSpeedDelay", 0.08f);
+                    // StartCoroutine(SpeedUP());
+                    SettingCamera();
+                    BackGroundSpeedGauge();
+                }
+                else
+                {
+                    Fever();
+                }
+            }
         }
-        
     }        
 
+    void SetSpeedDelay()
+    {
+        isSpeedDelay = false;
+    }
+
+    void SetGauge()
+    {
+        gauge += Time.deltaTime * accel;
+    }
+
+    void BlockSpeedGauge()
+    {
+        Debug.Log("블럭 속도 셋팅 횟수");
+        blocks.speed = gauge;
+        gameManager.blockSpeed = gauge;
+    }
+
+    void BackGroundSpeedGauge()
+    {
+        backGround.BackGroundSpeed = gauge;
+    }
 
     IEnumerator SpeedUP()
     {
-        isSpeedDelay = true;
-        Debug.Log("speed UP 실행");
+        isSpeedDelay = true;        
         if (gauge < gaugelimit)
         {
-            gauge += 5 * Time.deltaTime; 
-            
+            gauge += 20 * Time.deltaTime;
+            SettingCamera();
             yield return new WaitForSeconds(0.05f);
-            Debug.Log("0.05초 지남 1");
+            
             blocks.speed = gauge;
             yield return new WaitForSeconds(0.05f);
-            Debug.Log("0.05초 지남 2");
-            // camera.
-            float container = gauge / guide;
-            camera.m_Lens.OrthographicSize = 10 + container;
-            yield return new WaitForSeconds(0.05f);
-            Debug.Log("0.05초 지남 3");
-            
-            // 배경 속도            
-            backGround.BackGroundSpeed = gauge;
-            yield return new WaitForSeconds(0.05f);
-            Debug.Log("0.05초 지남 4");
 
-        }        
+            SettingCamera();
+            yield return new WaitForSeconds(0.05f);
+
+
+            // 배경 속도            
+            BackGroundSpeedGauge();
+            yield return new WaitForSeconds(0.05f);
+            SettingCamera();
+
+        }
+        else
+        {
+            Fever();
+        }      
         
         isSpeedDelay = false;
     }
 
+    void SettingCamera()
+    {
+        // camera.
+        float container = gauge / guide;
+        camera.m_Lens.OrthographicSize = 10 + container;
+    }
+
+    public void Fever()
+    {        
+        if (!isFever)
+        {
+            StartCoroutine(DoFever());
+        }
+    }
+    IEnumerator DoFever()
+    {
+        isFever = true;
+        Debug.Log("피버타임 발동 Check 1");
+        yield return new WaitForSeconds(2.5f);
+        Debug.Log("피버타임 발동 Check 2");
+        yield return new WaitForSeconds(2.5f);
+        Debug.Log("피버타임 발동 Check 3");
+        yield return new WaitForSeconds(2.5f);
+        Debug.Log("피버타임 발동 Check 4");
+        yield return new WaitForSeconds(2.5f);
+        Debug.Log("피버타임 발동 Check 5");        
+        gauge = gauge / 3;
+        isFever = false;
+        isSpeedDelay = false;
+    }
 
     void GameManagerMapping()
     {
@@ -118,8 +189,12 @@ public class Player : MonoBehaviour
             // Debug.Log("부딪혔다 플레이어가 블럭에 ");
 
             // 블럭 채력 받아와서 speed 감소
-            Block block = collision.gameObject.GetComponent<Block>();
-            gauge = block.GetAfterGauge(gauge);
+            if (!isFever)
+            {
+                Block block = collision.gameObject.GetComponent<Block>();
+                gauge = block.GetAfterGauge(gauge);
+            }
+            
 
             // gauge 가 음수면 사망띠
             IsPlayerDead();

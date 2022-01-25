@@ -60,7 +60,7 @@ public class SpawnManager : MonoBehaviour
 
         GameObject obj = objectManager.MakeObj(BlockName[ranBlock]);
         obj.transform.position = spawnPoints[ranPoint].position;
-        obj.GetComponent<Block>().SetBlock(gameManager.blockHP, gameManager.blockSpeed);
+        obj.GetComponent<Block>().SetBlock(gameManager.blockHP, gameManager.blockSpeed, gameManager.blockScore, gameManager.blockResistance);
         
     }
 

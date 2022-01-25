@@ -1544,11 +1544,11 @@ MonoBehaviour:
   blocks: {fileID: 0}
   backGround: {fileID: 0}
   gaugeSlider: {fileID: 362057354}
-  _gauge: 10
+  _gauge: 5
   touch: {fileID: 312743014}
   back: {fileID: 0}
   playerSkin: {fileID: 1849388410}
-  gaugelimit: 50
+  gaugelimit: 100
 --- !u!1 &1529127299
 GameObject:
   m_ObjectHideFlags: 3

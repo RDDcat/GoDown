@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class UpgradeButton : MonoBehaviour
 {
-    
+    public Canvas mainCanvas;
     public void GoUpgrade()
     {
         // 업그레이드 실로

@@ -27,11 +27,11 @@ public class ObjectManager : MonoBehaviour
     private void Awake()
     {
         // Debug.Log("오브젝트 풀링");
-        Block1 = new GameObject[30];
-        Block2 = new GameObject[30];
+        Block1 = new GameObject[20];
+        Block2 = new GameObject[20];
 
-        coinBlock1 = new GameObject[30];
-        coinBlock2 = new GameObject[30];
+        coinBlock1 = new GameObject[15];
+        coinBlock2 = new GameObject[15];
 
         coin = new GameObject[20];
 

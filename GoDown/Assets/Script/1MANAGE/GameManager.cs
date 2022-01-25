@@ -22,22 +22,34 @@ public class GameManager : MonoBehaviour
     public RectTransform GameOver;
 
     public Text scoreText;
-    
-    public long money;
-    public long score;
+    public Text goldText;
+    public Text multyplyText;
 
     public float blockSpeed;
+    public float blockSpeedLimit; // 게이지 상한선 업글 max 100
+    public float blockAccel; // 가속도 업글 + 0.001f 씩
     public int blockHP;
+    public int blockScore;
+    public float blockResistance;
+
+
+    public bool onPlay;
 
     private void Start()
     {
         objectManager = FindObjectOfType<ObjectManager>();
+        InitAccountData();
     }
 
     public void GameStart()
     {
         // 디버그
         Debug.Log("게임 스타트");
+
+        onPlay = true;
+
+        // 수치 가져오기
+        InitAccountData();
 
         // 씬전환
         // 인게임 씬 켜기
@@ -61,6 +73,14 @@ public class GameManager : MonoBehaviour
         // 게임 오브젝트 스폰 시작
         // spawnManager.StartSpawn();
 
+    }
+
+    void InitAccountData()
+    {
+        blockSpeed = AccountManager.instance.accountVO.blockSpeed;
+        blockSpeedLimit = AccountManager.instance.accountVO.blockSpeedLimit;
+        blockAccel = AccountManager.instance.accountVO.blockAccel;
+        blockResistance = AccountManager.instance.accountVO.blockResistance;
     }
 
     void CloseBackGround()
@@ -120,12 +140,14 @@ public class GameManager : MonoBehaviour
         // 결과 텍스트 지정
         SetResultText();
 
+        // 플레이어 가속 중단
+        onPlay = false;
 
         // 게임 종료 보상 계정에 더하기
-
+        AccountManager.instance.SetGold();
 
         // 최고 스코어 저장
-        AccountManager.instance.CheckHighestScore(score);
+        // AccountManager.instance.CheckHighestScore();
 
         // 결과창 
         Invoke("GameOverCanvas", 0.45f); // 배경속도에 맞춰서 올라오면 좋음
@@ -141,6 +163,8 @@ public class GameManager : MonoBehaviour
     public void SetResultText()
     {
         scoreText.text = AccountManager.instance.score.ToString();
+        goldText.text = AccountManager.instance.GetGold().ToString();
+        multyplyText.text = "x" + AccountManager.instance.multiplyGold.ToString();
     }
 
     public void GameOverCanvas()
@@ -150,11 +174,10 @@ public class GameManager : MonoBehaviour
 
     public void GameEndVarInit()
     {
-        score = 0;
-        money = 0;
+        onPlay = false;
 
         // 계정 스코어 초기화
-        AccountManager.instance.score = 0;
+        AccountManager.instance.InitVariables();
 
         // 결과창 옮기기
         GameOver.position = new Vector2(GameOver.position.x, -2400);

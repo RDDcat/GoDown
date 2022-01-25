@@ -39,18 +39,18 @@ public class Logo : MonoBehaviour
         if (!isToggle)
         {
             // Debug.Log("아래로");
-            logo.DOAnchorPos(new Vector2(0, 300), 5f);
+            logo.DOAnchorPos(new Vector2(0, 350), 5f);
             isToggle = true;
         }
         else
         {
             // Debug.Log("위로");
-            logo.DOAnchorPos(new Vector2(0, 330), 5f);
+            logo.DOAnchorPos(new Vector2(0, 320), 5f);
             isToggle = false;
         }
 
         yield return new WaitForSeconds(5f);
-        Debug.Log("false");
+        
         isDelay = false;
     }
 }
