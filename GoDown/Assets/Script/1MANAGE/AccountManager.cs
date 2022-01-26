@@ -9,8 +9,12 @@ public class AccountManager : MonoBehaviour
 
     public AccountVO accountVO;
 
+    public Canvas InGameCanvas;
+    public Canvas MainStoreCanvas;
+
     public Text scoreText;
     public Text goldText;
+    public Text accountGoldText;
 
     public long _score;
     public long _gold;
@@ -41,22 +45,44 @@ public class AccountManager : MonoBehaviour
         }
     }
 
+
+    public long accountGold
+    {
+        get
+        {
+            Debug.Log( "accountVO.gold " + accountVO.gold);
+            return accountVO.gold;
+        }
+        set
+        {            
+            accountVO.gold = value;
+            SetAccountGoldText();
+            Debug.Log("계정 골드 " + accountGold);
+        }
+    }
+
+    public void SetAccountGoldText()
+    {
+        accountGoldText.text = accountVO.gold.ToString();
+    }
+
+
+
     public void InitVariables()
     {
         // 게임 종료시 변수 초기화
         score = 0;
-        gold = 0;
-    }
-
-    public void SaveGold()
-    {
-        accountVO.gold += _gold;
+        gold = 0;        
     }
 
     public long GetGold()
     {
-        long result = (long)Mathf.Sqrt(score) + _gold;
+        long result = (long)Mathf.Sqrt(score) + gold;
         return result;
+    }
+    public void SetGold()
+    {
+        accountGold += (long)(GetGold() * accountVO.multiplyGold);
     }
 
     public void SetScoreText(long __score)
@@ -69,6 +95,18 @@ public class AccountManager : MonoBehaviour
         goldText.text = __gold.ToString();
     }
 
+    public void OnGameCanvas()
+    {
+        InGameCanvas.enabled = true;
+        MainStoreCanvas.enabled = false;
+    }
+
+    public void OnMainCanvas()
+    {
+        InGameCanvas.enabled = false;
+        MainStoreCanvas.enabled = true;
+    }
+
 
     void Start()
     {
@@ -78,29 +116,14 @@ public class AccountManager : MonoBehaviour
         // 계정 로드
         accountVO = SaveSystem.Load("account") as AccountVO;
 
-        if(accountVO == null)
-        {
-            Debug.Log("어카운트 브이오 생성");
-            accountVO = new AccountVO();
-            accountVO.multiplyGold = 1;
-            accountVO.blockSpeed = 3;
-            accountVO.blockSpeedLimit = 10;
-            accountVO.blockAccel = 1;
-            accountVO.playerSpeed = 5;
-            accountVO.blockResistance = 0;
-            SaveSystem.Save("account", accountVO);
-        }
 
-        // 디버그
-        SetScoreText(_score);
+        SetScoreText(_score);        
+        SetAccountGoldText();
+        Debug.Log(accountVO.gold + " 골드량");
 
     }
 
-    public void SetGold()
-    {
-        accountVO.gold = (long)(gold * accountVO.multiplyGold);
-
-    }
+    
 
     public void CheckHighestScore(long score)
     {
@@ -108,10 +131,14 @@ public class AccountManager : MonoBehaviour
             accountVO.highestScore = score;
     }
 
+    public void SaveAccount()
+    {
+        SaveSystem.Save("account", accountVO);
+    }
 
     private void OnApplicationQuit()
     {
-        SaveSystem.Save("account", accountVO);
+        SaveAccount();
     }
 
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class GameManager : MonoBehaviour
     public ObjectManager objectManager;
 
     public Blocks blocks;
-    public Player player;
+    public Player player;    
 
     // 씬
     public Canvas MainCanvas;
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
     public Text scoreText;
     public Text goldText;
     public Text multyplyText;
+    public TextMeshProUGUI rewardGoldText;
 
     public float blockSpeed;
     public float blockSpeedLimit; // 게이지 상한선 업글 max 100
@@ -44,7 +46,7 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         // 디버그
-        Debug.Log("게임 스타트");
+        // Debug.Log("게임 스타트");
 
         onPlay = true;
 
@@ -60,6 +62,9 @@ public class GameManager : MonoBehaviour
 
         // 메인캔버스 끄기
         CloseMainCanvas();
+        
+        // 어카운트 매니저 점수 캔버스 켜기
+        AccountManager.instance.OnGameCanvas();
 
         // 배경 끄기
         CloseBackGround();
@@ -70,17 +75,43 @@ public class GameManager : MonoBehaviour
         // 플레이어 켜기
         player.SetPlayerOn();
 
-        // 게임 오브젝트 스폰 시작
-        // spawnManager.StartSpawn();
+        // 점수 증가
+        StartCoroutine(AutoAddScore());
 
+    }
+
+
+    IEnumerator AutoAddScore()
+    {
+        while (true)
+        {
+            if (onPlay)
+            {                
+                AccountManager.instance.score += 10;
+                yield return new WaitForSeconds(0.5f);
+            }
+            else
+            {
+                yield return null;
+            }
+        }        
     }
 
     void InitAccountData()
     {
-        blockSpeed = AccountManager.instance.accountVO.blockSpeed;
-        blockSpeedLimit = AccountManager.instance.accountVO.blockSpeedLimit;
-        blockAccel = AccountManager.instance.accountVO.blockAccel;
-        blockResistance = AccountManager.instance.accountVO.blockResistance;
+        try
+        {
+            blockSpeed = AccountManager.instance.accountVO.blockSpeed;
+            blockSpeedLimit = AccountManager.instance.accountVO.blockSpeedLimit;
+            blockAccel = AccountManager.instance.accountVO.blockAccel;
+            blockResistance = AccountManager.instance.accountVO.blockResistance;
+        }
+        catch
+        {
+            Debug.LogErrorFormat("게임메니저 계정데이터 불러오기 에러");
+            Invoke("InitAccountData", 0.1f);
+        }
+        
     }
 
     void CloseBackGround()
@@ -119,6 +150,7 @@ public class GameManager : MonoBehaviour
         {
             spawnManager = FindObjectOfType<SpawnManager>();
         }
+        
     }
 
     void CloseMainCanvas()
@@ -134,6 +166,11 @@ public class GameManager : MonoBehaviour
     public void GameEnd()
     {
         Debug.Log("게임 엔드");
+        if (!onPlay)
+        {
+            return;
+        }
+
         // 게임 오브젝트 스폰 중단
         spawnManager.StopSpawn();
 
@@ -153,10 +190,7 @@ public class GameManager : MonoBehaviour
         Invoke("GameOverCanvas", 0.45f); // 배경속도에 맞춰서 올라오면 좋음
 
         // 계정 저장
-
-
-        // 게임 종료 이펙트
-
+        AccountManager.instance.SaveAccount();
 
     }
 
@@ -165,6 +199,8 @@ public class GameManager : MonoBehaviour
         scoreText.text = AccountManager.instance.score.ToString();
         goldText.text = AccountManager.instance.GetGold().ToString();
         multyplyText.text = "x" + AccountManager.instance.multiplyGold.ToString();
+        long rewardGold = (long)(AccountManager.instance.GetGold() * AccountManager.instance.multiplyGold);
+        rewardGoldText.text = rewardGold.ToString();
     }
 
     public void GameOverCanvas()
@@ -190,7 +226,12 @@ public class GameManager : MonoBehaviour
         OpenBackGround();
         objectManager.OffObjects();
         GameEndVarInit();
+        
+        // 어카운트 매니저 메인 켜기
+        AccountManager.instance.OnMainCanvas();
     }
+
+    
 
     public void UnLoadInGameScene()
     {

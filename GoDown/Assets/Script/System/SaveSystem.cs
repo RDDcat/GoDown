@@ -7,8 +7,7 @@ using System;
 public static class SaveSystem
 {
     public static void Save(string saveName, object saveData)
-    {
-        Debug.Log("디버그 가능?"+ Application.persistentDataPath);
+    {        
         // 폴더 있는지
         if (!Directory.Exists(Application.persistentDataPath + "/saves"))
         {
@@ -20,21 +19,26 @@ public static class SaveSystem
         //파일 있는지
         if (!File.Exists(path))
         {
-            Debug.Log("디버그 가능@?");
-            FileStream fs = File.Create(path);
+            using (FileStream fs = File.Create(path))
+            {
+                
+            }
             
         }
-
+        
         string json = JsonUtility.ToJson(saveData);
+
         try
         {
             Byte[] data = Crypto.Encrypt(json);
-
             File.WriteAllBytes(path, data);
+
+            // 테스트용
+            // File.WriteAllText(path, json);
         }
         catch
         {
-
+            Debug.Log("계정 에러");
         }
 
     }
@@ -51,8 +55,17 @@ public static class SaveSystem
         // 파일이 존재하는지 체크
         if (!File.Exists(path))
         {
-            AccountVO d = new AccountVO();
-            Save(path, d);
+            // 초기화
+            AccountVO accountVO = new AccountVO();
+            Debug.Log("어카운트 브이오 생성");
+            accountVO = new AccountVO();
+            accountVO.multiplyGold = 1;
+            accountVO.blockSpeed = 3;
+            accountVO.blockSpeedLimit = 10;
+            accountVO.blockAccel = 1;
+            accountVO.playerSpeed = 5;
+            accountVO.blockResistance = 0;
+            Save("account", accountVO);            
         }
 
         try
@@ -61,13 +74,16 @@ public static class SaveSystem
 
             string json = Crypto.Decrypt(dataBack);
 
+            // 테스트용
+            // string json = File.ReadAllText(path);
+
             object a = JsonUtility.FromJson<AccountVO>(json);
 
             return a;
         }
         catch
         {
-
+            Debug.Log("계정 에러");
         }
 
         return null;

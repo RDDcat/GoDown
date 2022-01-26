@@ -62,28 +62,13 @@ public class Block : MonoBehaviour
             Player p = collision.gameObject.GetComponent<Player>();
 
             // 플레이어의 속도가 블럭 hp보다 크면
-            if (p.gauge >= hp)
-            {
-                Debug.Log("블럭 부서짐");
+            if (p.gauge >= 0)
+            {                
                 // 블럭이 부서짐
                 gameObject.SetActive(false);
                 // 블럭 파괴 이펙트
-                switch (blockLv)
-                {
-                    case -1:
-                        GameObject Break01 = EffectManager.SpawnFromPool("Break01", gameObject.transform.position);
-                        break;
-                    case 1 :
-                        GameObject Break1 = EffectManager.SpawnFromPool("Break1", gameObject.transform.position);
-                        break;
-                    case 2:
-                        GameObject Break2 = EffectManager.SpawnFromPool("Break2", gameObject.transform.position);
-                        break;
-                    case 3:
-                        GameObject Break3 = EffectManager.SpawnFromPool("Break3", gameObject.transform.position);
-                        break;
-                }
-                
+                PlayEffect();
+
 
                 // 점수 획득 (일단 +1000)
                 AccountManager.instance.score += score;
@@ -94,14 +79,34 @@ public class Block : MonoBehaviour
             {
                 // 블럭이 안부서짐
                 gameObject.SetActive(false);
+                PlayEffect();
             }
 
         }
     }
 
+    public void PlayEffect()
+    {
+        switch (blockLv)
+        {
+            case -1:
+                EffectManager.SpawnFromPool("Break01", gameObject.transform.position);
+                break;
+            case 1:
+                EffectManager.SpawnFromPool("Break1", gameObject.transform.position);
+                break;
+            case 2:
+                EffectManager.SpawnFromPool("Break2", gameObject.transform.position);
+                break;
+            case 3:
+                EffectManager.SpawnFromPool("Break3", gameObject.transform.position);
+                break;
+        }
+    }
+
     public float GetAfterGauge(float gauge)
     {
-        float damage = hp * resistance;
+        float damage = hp * (1 - resistance);
         return gauge - damage;
     }
 

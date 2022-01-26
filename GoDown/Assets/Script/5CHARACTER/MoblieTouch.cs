@@ -59,8 +59,7 @@ public class MoblieTouch : MonoBehaviour
 
     // 외부에서 터치 컨트롤
     public void FreezeTouch()
-    {
-        Debug.Log("FreezeTouch 얼음");
+    {        
         isTouch = false;
     }
 

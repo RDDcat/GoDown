@@ -5,7 +5,7 @@ using Cinemachine;
 
 public class Player : MonoBehaviour
 {
-    public CinemachineVirtualCamera camera;
+    public new CinemachineVirtualCamera camera;
 
     public GameManager gameManager;    
     public Blocks blocks;
@@ -35,15 +35,17 @@ public class Player : MonoBehaviour
     float guide;
     float guide2;
     bool isSpeedDelay;
-    bool isFever;
+    public bool isFever;
 
     private void Start()
     {        
         GameManagerMapping();
         Mapping();
+        touch.MeltTouch();
         gaugelimit = gameManager.blockSpeedLimit;
         accel = gameManager.blockAccel;
         guide = gaugelimit / 9f;
+
     }
 
     private void FixedUpdate()
@@ -82,7 +84,6 @@ public class Player : MonoBehaviour
 
     void BlockSpeedGauge()
     {
-        Debug.Log("블럭 속도 셋팅 횟수");
         blocks.speed = gauge;
         gameManager.blockSpeed = gauge;
     }
@@ -98,6 +99,9 @@ public class Player : MonoBehaviour
         if (gauge < gaugelimit)
         {
             gauge += 20 * Time.deltaTime;
+            AnimationCheck();
+            yield return new WaitForSeconds(0.05f);
+
             SettingCamera();
             yield return new WaitForSeconds(0.05f);
             
@@ -108,7 +112,7 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
 
 
-            // 배경 속도            
+            // 배경 속도
             BackGroundSpeedGauge();
             yield return new WaitForSeconds(0.05f);
             SettingCamera();
@@ -120,6 +124,19 @@ public class Player : MonoBehaviour
         }      
         
         isSpeedDelay = false;
+    }
+
+    public void AnimationCheck()
+    {
+        if(gauge< gaugelimit / 2)
+        {
+            // 빠른 애니메이션
+
+        }
+        else
+        {
+            // 저속 애니메이션
+        }
     }
 
     void SettingCamera()
@@ -177,7 +194,7 @@ public class Player : MonoBehaviour
         try
         {
             blocks = FindObjectOfType<Blocks>();
-            back = FindObjectOfType<BackGround2>();
+            // back = FindObjectOfType<BackGround2>();
             backGround = FindObjectOfType<BackGround>();
         }
         catch
@@ -192,8 +209,6 @@ public class Player : MonoBehaviour
         // 플레이어가 블럭에 부딪혔을때 플레이어는
         if (collision.gameObject.layer == LayerMask.NameToLayer("Object"))
         {
-            // Debug.Log("부딪혔다 플레이어가 블럭에 ");
-
             // 블럭 채력 받아와서 speed 감소
             if (!isFever)
             {
@@ -201,7 +216,6 @@ public class Player : MonoBehaviour
                 Block block = collision.gameObject.GetComponent<Block>();
                 gauge = block.GetAfterGauge(gauge);
             }
-            
 
             // gauge 가 음수면 사망띠
             IsPlayerDead();

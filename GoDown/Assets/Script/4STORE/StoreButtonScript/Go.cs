@@ -16,6 +16,8 @@ public class Go : MonoBehaviour
 
     public void ExitStore()
     {
+        AccountManager.instance.SaveAccount();
+
         SceneManager.UnloadSceneAsync("4STORE");
         SceneManager.LoadSceneAsync("2MAIN", LoadSceneMode.Additive);
     }

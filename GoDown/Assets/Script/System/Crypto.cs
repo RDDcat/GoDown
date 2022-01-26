@@ -7,8 +7,8 @@ using System.Text;
 
 public static class Crypto
 {
-    private static byte[] encrypt_key = Encoding.ASCII.GetBytes("maromaromaromaromaromaromaromaro");
-    private static byte[] encrypt_IV = Encoding.ASCII.GetBytes("0123456789012345");
+    private static readonly byte[] encrypt_key = Encoding.ASCII.GetBytes("maromaromaromaromaromaromaromaro");
+    private static readonly byte[] encrypt_IV = Encoding.ASCII.GetBytes("0123456789012345");
 
     public static byte[] Encrypt(string data)
     {
