@@ -62,7 +62,8 @@ public class Player : MonoBehaviour
                     Invoke("SetSpeedDelay", 0.08f);
                     // StartCoroutine(SpeedUP());
                     SettingCamera();
-                    BackGroundSpeedGauge();
+                    BackGroundSpeedGauge();                    
+                    AnimationCheck();
                 }
                 else
                 {
@@ -98,8 +99,7 @@ public class Player : MonoBehaviour
         isSpeedDelay = true;        
         if (gauge < gaugelimit)
         {
-            gauge += 20 * Time.deltaTime;
-            AnimationCheck();
+            gauge += 20 * Time.deltaTime;            
             yield return new WaitForSeconds(0.05f);
 
             SettingCamera();
@@ -128,14 +128,15 @@ public class Player : MonoBehaviour
 
     public void AnimationCheck()
     {
-        if(gauge< gaugelimit / 2)
+        if(gauge > gaugelimit / 2)
         {
             // 빠른 애니메이션
-
+            Debug.Log("빠른 애니메이션으로 실행");
         }
         else
         {
             // 저속 애니메이션
+            Debug.Log("느린 애니메이션으로 실행");
         }
     }
 
@@ -169,7 +170,7 @@ public class Player : MonoBehaviour
         Debug.Log("피버타임 발동 Check 4");
 
         yield return new WaitForSeconds(2.5f);
-        Debug.Log("피버타임 끝");       
+        Debug.Log("피버타임 끝");
         
         gauge = gauge / 3;
         isFever = false;
@@ -248,9 +249,7 @@ public class Player : MonoBehaviour
             // 게임종료
             gameManager.GameEnd();
 
-            // 디버그
-            Debug.Log("플레이어의 gauge가 다 닳았습니다... (사망)");
-
+            
         }
     }
 
