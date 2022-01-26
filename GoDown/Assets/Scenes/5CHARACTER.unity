@@ -1167,6 +1167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1232602397}
   - component: {fileID: 1232602396}
+  - component: {fileID: 1232602398}
   m_Layer: 0
   m_Name: CM vcam2
   m_TagString: Untagged
@@ -1224,6 +1225,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1232602398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232602395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ConfineMode: 0
+  m_BoundingVolume: {fileID: 0}
+  m_BoundingShape2D: {fileID: 1779426929}
+  m_ConfineScreenEdges: 1
+  m_Damping: 0
 --- !u!1 &1299809130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1549,6 +1567,7 @@ MonoBehaviour:
   back: {fileID: 0}
   playerSkin: {fileID: 1849388410}
   gaugelimit: 100
+  isFever: 0
 --- !u!1 &1529127299
 GameObject:
   m_ObjectHideFlags: 3
@@ -2076,7 +2095,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 1
-  m_Offset: {x: 0, y: 0.023514152}
+  m_Offset: {x: -0.000000014901161, y: 0.023514152}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2087,7 +2106,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 3.8284419}
+  m_Size: {x: 0.9541342, y: 3.8284419}
   m_EdgeRadius: 0
 --- !u!66 &1779426929
 CompositeCollider2D:
@@ -2109,20 +2128,20 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 1779426928}
     m_ColliderPaths:
-    - - X: 109999707
+    - - X: 104954475
         Y: -189070688
-      - X: 109999707
+      - X: 104954475
         Y: 193773504
-      - X: -110000000
+      - X: -104954768
         Y: 193773211
-      - X: -109999707
+      - X: -104954475
         Y: -189070688
   m_CompositePaths:
     m_Paths:
-    - - {x: 10.999942, y: -18.907068}
-      - {x: 10.999942, y: 19.37735}
-      - {x: -11, y: 19.37729}
-      - {x: -10.999942, y: -18.907068}
+    - - {x: 10.495419, y: -18.907068}
+      - {x: 10.495419, y: 19.37735}
+      - {x: -10.495477, y: 19.37729}
+      - {x: -10.495419, y: -18.907068}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &1779426930

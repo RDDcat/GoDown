@@ -19,5 +19,12 @@ public class AccountVO
     // 모바일 터치
     public float playerSpeed; // 플레이어 좌우속도
 
-    
+
+    // 업그레이드 데이터
+    public int Upgrade1;
+    public int Upgrade2;
+    public int Upgrade3;
+    public int Upgrade4;
+    public int Upgrade5;
+    public int Upgrade6;
 }
