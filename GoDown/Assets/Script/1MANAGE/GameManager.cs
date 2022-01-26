@@ -71,9 +71,7 @@ public class GameManager : MonoBehaviour
 
         
         // 게임 시작 사운드
-
-        // 플레이어 켜기
-        player.SetPlayerOn();
+                
 
         // 점수 증가
         StartCoroutine(AutoAddScore());
@@ -145,6 +143,8 @@ public class GameManager : MonoBehaviour
         if (player == null)
         {
             player = FindObjectOfType<Player>();
+            // 플레이어 켜기
+            player.SetPlayerOn();
         }
         if(spawnManager == null)
         {
