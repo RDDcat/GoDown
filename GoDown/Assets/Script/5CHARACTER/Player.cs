@@ -210,6 +210,8 @@ public class Player : MonoBehaviour
         // 플레이어가 블럭에 부딪혔을때 플레이어는
         if (collision.gameObject.layer == LayerMask.NameToLayer("Object"))
         {
+            //효과음 
+            SoundManager.instance.sfxPlay(SoundManager.Sfx.Break);
             // 블럭 채력 받아와서 speed 감소
             if (!isFever)
             {
@@ -231,15 +233,15 @@ public class Player : MonoBehaviour
         if(gauge < 0)
         {
             // 플레이어 사망
-            GameObject Dead = EffectManager.SpawnFromPool("Dead", playerSkin.transform.position);
+            
             // 플레이어 끄기
             SetPlayerOff();
 
             // 플레이어 사망 이펙트
-
+            EffectManager.SpawnFromPool("Dead", playerSkin.transform.position);
 
             // 플레이어 사망 사운드
-
+            SoundManager.instance.sfxPlay(SoundManager.Sfx.Dead);
 
             // 터치 중단
             touch.FreezeTouch();

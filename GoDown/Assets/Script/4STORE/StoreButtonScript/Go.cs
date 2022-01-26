@@ -20,6 +20,8 @@ public class Go : MonoBehaviour
 
         SceneManager.UnloadSceneAsync("4STORE");
         SceneManager.LoadSceneAsync("2MAIN", LoadSceneMode.Additive);
+        // 클릭사운드
+        SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
     }
 
     

@@ -57,7 +57,9 @@ public class Upgrade : MonoBehaviour
         {            
             return;
         }
-        
+        //효과음
+        SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
+
         // 돈소모
         AccountManager.instance.accountGold -= AccountManager.instance.accountVO.Upgrade1 * 10;
 
@@ -82,6 +84,8 @@ public class Upgrade : MonoBehaviour
         {
             return;
         }
+        //효과음
+        SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
 
         // 돈소모
         AccountManager.instance.accountGold -= AccountManager.instance.accountVO.Upgrade2 * 10;
@@ -106,6 +110,8 @@ public class Upgrade : MonoBehaviour
         {            
             return;
         }
+        //효과음
+        SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
 
         // 돈소모
         AccountManager.instance.accountGold -= AccountManager.instance.accountVO.Upgrade3 * 10;
@@ -132,6 +138,8 @@ public class Upgrade : MonoBehaviour
         {
             return;
         }
+        //효과음
+        SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
 
         // 돈소모
         AccountManager.instance.accountGold -= AccountManager.instance.accountVO.Upgrade4 * 10;
@@ -157,6 +165,8 @@ public class Upgrade : MonoBehaviour
         {
             return;
         }
+        //효과음
+        SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
 
         // 돈소모
         AccountManager.instance.accountGold -= AccountManager.instance.accountVO.Upgrade5 * 10;
@@ -182,6 +192,8 @@ public class Upgrade : MonoBehaviour
         {
             return;
         }
+        //효과음
+        SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
 
         // 돈소모
         AccountManager.instance.accountGold -= AccountManager.instance.accountVO.Upgrade6 * 10;

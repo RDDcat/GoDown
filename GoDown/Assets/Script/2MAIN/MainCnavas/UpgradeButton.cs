@@ -14,6 +14,8 @@ public class UpgradeButton : MonoBehaviour
 
         // 스토어 씬 켜기
         SceneManager.LoadSceneAsync("4STORE", LoadSceneMode.Additive);
+        // 클릭사운드
+        SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
 
     }
 }

@@ -229,6 +229,8 @@ public class GameManager : MonoBehaviour
         
         // 어카운트 매니저 메인 켜기
         AccountManager.instance.OnMainCanvas();
+        //효과음
+        SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
     }
 
     

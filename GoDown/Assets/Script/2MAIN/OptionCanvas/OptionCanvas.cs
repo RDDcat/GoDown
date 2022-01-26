@@ -16,12 +16,16 @@ public class OptionCanvas : MonoBehaviour
 
     public void OpenOptionCanvas()
     {
+        // 클릭사운드
+        SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
         canvas.enabled = true;
     }
 
 
     public void CloseButton()
     {
+        // 클릭사운드
+        SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
         // 옵션캔버스 닫기
         canvas.enabled = false;
     }
