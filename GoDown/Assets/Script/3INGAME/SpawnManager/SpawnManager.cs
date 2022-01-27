@@ -18,7 +18,7 @@ public class SpawnManager : MonoBehaviour
 
     private void Awake()
     {
-        BlockName = new string[] { "Block1", "Block2", "Block3", "CoinBlock1" , "CoinBlock1"};
+        BlockName = new string[] { "Block1", "Block2", "Block3", "Block4", "Block5", "Block6", "CoinBlock1" , "CoinBlock1"};
         try
         {
             objectManager = FindObjectOfType<ObjectManager>();
@@ -68,7 +68,7 @@ public class SpawnManager : MonoBehaviour
         if (curSpawnDelay > maxSpawnDelay)
         {
             SpawnBlock();
-            maxSpawnDelay = Random.Range(0.25f, 1.25f);
+            maxSpawnDelay = Random.Range(0.4f, 1.5f);
             curSpawnDelay = 0;
         }
     }
@@ -80,7 +80,7 @@ public class SpawnManager : MonoBehaviour
 
         GameObject obj;
 
-        if (gameManager.blockHP < 10)
+        if (gameManager.blockHP <= 10)
         {
             obj = objectManager.MakeObj(BlockName[ranBlock]);
         }
@@ -93,26 +93,36 @@ public class SpawnManager : MonoBehaviour
             obj = objectManager.MakeObj(BlockName[ranBlock+4]);
         }
 
-        obj.transform.position = spawnPoints[ranPoint].position;
         obj.GetComponent<Block>().SetBlock(gameManager.blockHP, gameManager.blockSpeed, gameManager.blockScore, gameManager.blockResistance);
-
+        obj.transform.position = spawnPoints[ranPoint].position;
     }
 
     private void SpawnLayerBlock()
     {
-        
+        Debug.Log("레이어 생성!!");
         for(int i =0; i < spawnPoints.Length; i++)
-        {            
-            GameObject obj = objectManager.MakeObj(BlockName[i%2]);
-            obj.transform.position = spawnPoints[i].position;
+        {
+            try
+            {
+                GameObject obj = objectManager.MakeObj(BlockName[i % 2]);
+                obj.GetComponent<Block>().SetBlock(gameManager.blockHP, 0, gameManager.blockScore, gameManager.blockResistance);
+                obj.transform.position = spawnPoints[i].position;
+            }
+            catch
+            {
+                GameObject obj = objectManager.MakeObj(BlockName[(i % 2) + 2]);
+                obj.GetComponent<Block>().SetBlock(gameManager.blockHP, 0, gameManager.blockScore, gameManager.blockResistance);
+                obj.transform.position = spawnPoints[i].position;
+            }
+            
         }
         
     }
 
     public float SpawnLayer(int layerNumber)
     {
-        StartCoroutine(SpawnLayerCorutine(layerNumber/8, 0.2f));
-        return 4f + (layerNumber * 0.1f);
+        StartCoroutine(SpawnLayerCorutine(layerNumber/2, 0.2f));
+        return 5f + (layerNumber * 0.1f);
     }
 
     IEnumerator SpawnLayerCorutine(int layerNumber, float waitSecond)
@@ -123,7 +133,7 @@ public class SpawnManager : MonoBehaviour
             yield return new WaitForSeconds(waitSecond);
         }
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         StartSpawn();
     }
 

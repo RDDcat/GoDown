@@ -70,12 +70,12 @@ public class AccountManager : MonoBehaviour
     {
         // 게임 종료시 변수 초기화
         score = 0;
-        gold = 0;        
+        gold = 10;
     }
 
     public long GetGold()
     {
-        long result = (long)Mathf.Sqrt(score) + gold;
+        long result = (long)Mathf.Sqrt(score) + gold * 4;
         return result;
     }
     public void SetGold()
@@ -117,7 +117,7 @@ public class AccountManager : MonoBehaviour
 
         SetScoreText(_score);        
         SetAccountGoldText();
-        Debug.Log(accountVO.gold + " 골드량");
+        
 
     }
 

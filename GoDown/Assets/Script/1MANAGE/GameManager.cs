@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
                 blockHP += 0.1f;
                 blockScore += 10;
                 level += 1;
-                if (level % 16 == 0) // 32렙 마다 한번씩
+                if (level % 14 == 0) // 32렙 마다 한번씩
                 {
                     spawnManager.StopSpawn();                    
                     yield return new WaitForSeconds(spawnManager.SpawnLayer(level));             

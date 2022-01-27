@@ -260,9 +260,11 @@ public class Player : MonoBehaviour
         if (playerSkin == null)
             return;
         playerSkin.enabled = true;
+        GetComponent<CapsuleCollider2D>().enabled = true;
     }
     public void SetPlayerOff()
     {
-        playerSkin.enabled = false;
+        playerSkin.enabled = false; 
+        GetComponent<CapsuleCollider2D>().enabled = false;
     }
 }

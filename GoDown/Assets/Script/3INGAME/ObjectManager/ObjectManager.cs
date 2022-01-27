@@ -65,6 +65,22 @@ public class ObjectManager : MonoBehaviour
         {
             Block2[i].SetActive(false);
         }
+        for (int i = 0; i < Block3.Length; i++)
+        {
+            Block3[i].SetActive(false);
+        }
+        for (int i = 0; i < Block4.Length; i++)
+        {
+            Block4[i].SetActive(false);
+        }
+        for (int i = 0; i < Block6.Length; i++)
+        {
+            Block6[i].SetActive(false);
+        }
+        for (int i = 0; i < Block5.Length; i++)
+        {
+            Block5[i].SetActive(false);
+        }
 
         for (int i = 0; i < coinBlock1.Length; i++)
         {
@@ -138,6 +154,22 @@ public class ObjectManager : MonoBehaviour
         {
             Block2[i].SetActive(false);
         }
+        for (int i = 0; i < Block3.Length; i++)
+        {
+            Block3[i].SetActive(false);
+        }
+        for (int i = 0; i < Block4.Length; i++)
+        {
+            Block4[i].SetActive(false);
+        }
+        for (int i = 0; i < Block5.Length; i++)
+        {
+            Block5[i].SetActive(false);
+        }
+        for (int i = 0; i < Block6.Length; i++)
+        {
+            Block6[i].SetActive(false);
+        }
 
         for (int i = 0; i < coinBlock1.Length; i++)
         {
@@ -162,9 +194,20 @@ public class ObjectManager : MonoBehaviour
             case "Block1":
                 targetPool = Block1;                
                 break;
-
             case "Block2":
                 targetPool = Block2;
+                break;
+            case "Block3":
+                targetPool = Block3;
+                break;
+            case "Block4":
+                targetPool = Block4;
+                break;
+            case "Block5":
+                targetPool = Block5;
+                break;
+            case "Block6":
+                targetPool = Block6;
                 break;
 
             case "CoinBlock1":

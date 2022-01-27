@@ -84,6 +84,11 @@ public class Upgrade : MonoBehaviour
         {
             return;
         }
+        if (AccountManager.instance.accountVO.Upgrade2 > 500)
+        {
+            return;
+        }
+
         //È¿°úÀ½
         SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
 
