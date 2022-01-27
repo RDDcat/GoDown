@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
 
         // 게임 시작 사운드
         SoundManager.instance.bgmPlay(SoundManager.Bgm.Ingame);
+        SoundManager.instance.sfxPlay(SoundManager.Sfx.Next);
 
         // 점수 증가 & 블럭 강화
         StartCoroutine(AutoAddScore());

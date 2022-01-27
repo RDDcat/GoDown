@@ -614,9 +614,6 @@ MonoBehaviour:
   - tag: Dead
     prefab: {fileID: 5672445368958358465, guid: 04b8328b9954c48428ed53c884ef6979, type: 3}
     size: 1
-  - tag: Speed1
-    prefab: {fileID: 8303752739778803492, guid: 47daded2c23b3f34fa519ae1e256858a, type: 3}
-    size: 1
 --- !u!1 &613803445
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,8 +789,14 @@ MonoBehaviour:
   - {fileID: 248662942}
   sfxClip:
   - {fileID: 8300000, guid: 65a7e8af42b69604782f7df08f9d9cc2, type: 3}
+<<<<<<< HEAD
   - {fileID: 8300000, guid: 4dbcc52e6e25ab94fb6f3e33287918f7, type: 3}
   - {fileID: 8300000, guid: 2e342f1dfe95cb54baee2c8ace583f2f, type: 3}
+=======
+  - {fileID: 8300000, guid: 6907cba7e1585ba41a80fce65f3446fe, type: 3}
+  - {fileID: 8300000, guid: 65a7e8af42b69604782f7df08f9d9cc2, type: 3}
+  - {fileID: 8300000, guid: d5bcdf2e8d5319c44aea7500fb301b1c, type: 3}
+>>>>>>> 485e7a776ec970a59c46b4f9c9cb808e88024cf7
 --- !u!1 &814078268
 GameObject:
   m_ObjectHideFlags: 0

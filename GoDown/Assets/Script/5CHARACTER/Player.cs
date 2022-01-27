@@ -30,6 +30,9 @@ public class Player : MonoBehaviour
     public BackGround2 back;
     public SpriteRenderer playerSkin;
 
+    public PlayerAni playerAni;
+    public ParticleSystem fever1;
+
     public float gaugelimit;
     float accel;
     float guide;
@@ -38,7 +41,7 @@ public class Player : MonoBehaviour
     public bool isFever;
 
     private void Start()
-    {        
+    {
         GameManagerMapping();
         Mapping();
         touch.MeltTouch();
@@ -46,6 +49,7 @@ public class Player : MonoBehaviour
         accel = gameManager.blockAccel;
         guide = gaugelimit / 9f;
 
+        playerAni = FindObjectOfType<PlayerAni>();
     }
 
     private void FixedUpdate()
@@ -63,7 +67,7 @@ public class Player : MonoBehaviour
                     // StartCoroutine(SpeedUP());
                     SettingCamera();
                     BackGroundSpeedGauge();                    
-                    AnimationCheck();
+                    playerAni.HighSpeedAni();
                 }
                 else
                 {
@@ -125,21 +129,6 @@ public class Player : MonoBehaviour
         
         isSpeedDelay = false;
     }
-
-    public void AnimationCheck()
-    {
-        if(gauge > gaugelimit / 2)
-        {
-            // 빠른 애니메이션
-            // Debug.Log("빠른 애니메이션으로 실행");
-        }
-        else
-        {
-            // 저속 애니메이션
-            // Debug.Log("느린 애니메이션으로 실행");
-        }
-    }
-
     void SettingCamera()
     {
         // camera.
@@ -158,7 +147,8 @@ public class Player : MonoBehaviour
     {
         isFever = true;
         Debug.Log("피버타임 발동 Check 1");
-        GameObject Speed1 = EffectManager.SpawnFromPool("Speed1", playerSkin.transform.position);
+
+        fever1.Play();
 
         yield return new WaitForSeconds(2.5f);
         Debug.Log("피버타임 발동 Check 2");
@@ -175,6 +165,8 @@ public class Player : MonoBehaviour
         gauge = gauge / 3;
         isFever = false;
         isSpeedDelay = false;
+
+        fever1.Stop();
     }
 
     void GameManagerMapping()
