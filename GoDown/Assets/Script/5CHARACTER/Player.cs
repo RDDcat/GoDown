@@ -230,7 +230,7 @@ public class Player : MonoBehaviour
 
     void IsPlayerDead()
     {
-        if(gauge < 5)
+        if(gauge < 1)
         {
             // 플레이어 사망
             

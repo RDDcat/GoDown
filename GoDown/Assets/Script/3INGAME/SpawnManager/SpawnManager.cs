@@ -18,7 +18,7 @@ public class SpawnManager : MonoBehaviour
 
     private void Awake()
     {
-        BlockName = new string[] { "Block1", "Block2", "CoinBlock1" , "CoinBlock1"};
+        BlockName = new string[] { "Block1", "Block2", "Block3", "CoinBlock1" , "CoinBlock1"};
         try
         {
             objectManager = FindObjectOfType<ObjectManager>();
@@ -37,6 +37,26 @@ public class SpawnManager : MonoBehaviour
         if (!stopSpawn)
         {
             Spawn();
+            if(gameManager.blockSpeed > 10)
+            {
+                if(Random.Range(0, 4) == 1)
+                {
+                    Spawn();
+                }                
+            }
+            else if (gameManager.blockSpeed > 30)
+            {
+                int num = Random.Range(0, 4);
+                if (num == 1)
+                {
+                    Spawn();
+                    Spawn();
+                }
+                if(num > 1)
+                {
+                    Spawn();
+                }
+            }
         }
         
     }
@@ -48,20 +68,34 @@ public class SpawnManager : MonoBehaviour
         if (curSpawnDelay > maxSpawnDelay)
         {
             SpawnBlock();
-            maxSpawnDelay = Random.Range(0.15f, 1.25f);
+            maxSpawnDelay = Random.Range(0.25f, 1.25f);
             curSpawnDelay = 0;
         }
     }
 
     private void SpawnBlock()
     {
-        int ranBlock = Random.Range(0, 4);
+        int ranBlock = Random.Range(0, 2);
         int ranPoint = Random.Range(0, 9);
 
-        GameObject obj = objectManager.MakeObj(BlockName[ranBlock]);
+        GameObject obj;
+
+        if (gameManager.blockHP < 10)
+        {
+            obj = objectManager.MakeObj(BlockName[ranBlock]);
+        }
+        else if(gameManager.blockHP > 10 && 20 > gameManager.blockHP)
+        {
+            obj = objectManager.MakeObj(BlockName[ranBlock+2]);
+        }
+        else
+        {
+            obj = objectManager.MakeObj(BlockName[ranBlock+4]);
+        }
+
         obj.transform.position = spawnPoints[ranPoint].position;
         obj.GetComponent<Block>().SetBlock(gameManager.blockHP, gameManager.blockSpeed, gameManager.blockScore, gameManager.blockResistance);
-        
+
     }
 
     private void SpawnLayerBlock()

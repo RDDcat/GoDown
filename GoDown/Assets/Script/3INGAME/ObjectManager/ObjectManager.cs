@@ -8,12 +8,22 @@ public class ObjectManager : MonoBehaviour
 
     public GameObject Block1Prefab;
     public GameObject Block2Prefab;
+    public GameObject Block3Prefab;
+    public GameObject Block4Prefab;
+    public GameObject Block5Prefab;
+    public GameObject Block6Prefab;
     public GameObject coinBlock1Prefab;
     public GameObject coinBlock2Prefab;
     public GameObject coinPrefab;
 
     GameObject[] Block1;
     GameObject[] Block2;
+
+    GameObject[] Block3;
+    GameObject[] Block4;
+
+    GameObject[] Block5;
+    GameObject[] Block6;
 
     GameObject[] coinBlock1;
     GameObject[] coinBlock2;
@@ -27,8 +37,14 @@ public class ObjectManager : MonoBehaviour
     private void Awake()
     {
         // Debug.Log("오브젝트 풀링");
-        Block1 = new GameObject[300];
-        Block2 = new GameObject[300];
+        Block1 = new GameObject[100];
+        Block2 = new GameObject[100];
+
+        Block3 = new GameObject[100];
+        Block4 = new GameObject[100];
+
+        Block5 = new GameObject[100];
+        Block6 = new GameObject[100];
 
         coinBlock1 = new GameObject[30];
         coinBlock2 = new GameObject[30];
@@ -77,6 +93,22 @@ public class ObjectManager : MonoBehaviour
             for (int i = 0; i < Block2.Length; i++)
             {
                 Block2[i] = Instantiate(Block2Prefab);
+            }
+            for (int i = 0; i < Block3.Length; i++)
+            {
+                Block3[i] = Instantiate(Block3Prefab);
+            }
+            for (int i = 0; i < Block4.Length; i++)
+            {
+                Block4[i] = Instantiate(Block4Prefab);
+            }
+            for (int i = 0; i < Block5.Length; i++)
+            {
+                Block5[i] = Instantiate(Block5Prefab);
+            }
+            for (int i = 0; i < Block6.Length; i++)
+            {
+                Block6[i] = Instantiate(Block6Prefab);
             }
 
             for (int i = 0; i < coinBlock1.Length; i++)

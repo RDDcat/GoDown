@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
         {
             if (onPlay)
             {
-                blockHP += 0.5f;
+                blockHP += 0.1f;
                 blockScore += 10;
                 level += 1;
                 if (level % 16 == 0) // 32렙 마다 한번씩
