@@ -63,19 +63,17 @@ public class SoundManager : MonoBehaviour
         sfxCursor = (sfxCursor + 1) % sfxPlayer.Length;
     }
 
-    public void OnOff_BGM(bool on)
+    public void OnOff_BGMPlayer(bool on)
     {
-        SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
-        //브금 온오프
+        //브금 활성 비활성
+        BGM_Group.SetActive(on ? true : false);
     }
-    public void OnOff_SFX(bool on)
+    public void OnOff_SFXPlayer(bool on)
     {
-        SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
-        //효과음 온오프
+        //효과음 활성 비활성
         if (on)
         {
             SFX_Group.SetActive(true);
-            SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
         }
         else
         {
