@@ -49,15 +49,13 @@ public class AccountManager : MonoBehaviour
     public long accountGold
     {
         get
-        {
-            Debug.Log( "accountVO.gold " + accountVO.gold);
+        {            
             return accountVO.gold;
         }
         set
         {            
             accountVO.gold = value;
-            SetAccountGoldText();
-            Debug.Log("∞Ë¡§ ∞ÒµÂ " + accountGold);
+            SetAccountGoldText();            
         }
     }
 

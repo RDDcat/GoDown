@@ -73,9 +73,26 @@ public class GameManager : MonoBehaviour
         // 게임 시작 사운드
                 
 
-        // 점수 증가
+        // 점수 증가 & 블럭 강화
         StartCoroutine(AutoAddScore());
+        StartCoroutine(AutoAddLevel());
+    }
 
+    IEnumerator AutoAddLevel()
+    {
+        while (true)
+        {
+            if (onPlay)
+            {
+                blockHP += 1;
+                blockScore += 100;
+                yield return new WaitForSeconds(4f);
+            }
+            else
+            {
+                yield return null;
+            }
+        }
     }
 
 

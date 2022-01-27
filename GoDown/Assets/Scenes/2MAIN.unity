@@ -784,7 +784,7 @@ MonoBehaviour:
   blockSpeed: 3
   blockSpeedLimit: 10
   blockAccel: 1
-  blockHP: 8
+  blockHP: 1
   blockScore: 100
   blockResistance: 10
   onPlay: 0
