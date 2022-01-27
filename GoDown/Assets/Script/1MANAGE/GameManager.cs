@@ -86,15 +86,15 @@ public class GameManager : MonoBehaviour
         {
             if (onPlay)
             {
-                blockHP += 0.1f;
-                blockScore += 100;
+                blockHP += 0.5f;
+                blockScore += 10;
                 level += 1;
-                if (level % 34 == 0) // 15렙 마다 한번씩
+                if (level % 16 == 0) // 32렙 마다 한번씩
                 {
                     spawnManager.StopSpawn();                    
                     yield return new WaitForSeconds(spawnManager.SpawnLayer(level));             
                 }
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(2f);
             }
             else
             {
