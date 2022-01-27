@@ -109,7 +109,8 @@ public class GameManager : MonoBehaviour
         while (true)
         {
             if (onPlay)
-            {                
+            {
+                Debug.Log("dsds");
                 AccountManager.instance.score += 10;
                 yield return new WaitForSeconds(0.5f);
             }
