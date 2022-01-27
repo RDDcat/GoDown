@@ -14,10 +14,14 @@ public class SwitchToggle : MonoBehaviour
 
     Toggle toggle;
 
+    public SoundManager soundManager;
+
     Vector2 handlePosition;
 
     private void Awake()
     {
+
+
         toggle = GetComponent<Toggle>();
         handlePosition = uiHandleRectTransform.anchoredPosition;
 
@@ -30,7 +34,10 @@ public class SwitchToggle : MonoBehaviour
         toggle.onValueChanged.AddListener(OnSwitch);
 
         if (toggle.isOn)
+        {
             OnSwitch(true);
+        }
+
     }
 
     void OnSwitch (bool on)
@@ -41,8 +48,8 @@ public class SwitchToggle : MonoBehaviour
         backgroundImage.DOColor(on ? backgroundActiveColor : backgroundDefaultColor, .6f);
         //토글 핸들색 전환
         handleImage.DOColor(on ? handleActiveColor : handleDefaultColor, .6f);
-
     }
+    
 
     private void OnDestroy()
     {

@@ -780,6 +780,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba24190efc110842b9d3047c04af707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BGM_Group: {fileID: 1618783809}
+  SFX_Group: {fileID: 1429475332}
   bgmPlayer: {fileID: 1618783810}
   bgmClip:
   - {fileID: 8300000, guid: 107b393660b61a0469ffbbecb8d52551, type: 3}
