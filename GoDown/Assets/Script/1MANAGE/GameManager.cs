@@ -70,11 +70,8 @@ public class GameManager : MonoBehaviour
         // 배경 끄기
         CloseBackGround();
 
-        // 배경음 전환
-        SoundManager.instance.bgmPlay(SoundManager.Bgm.Ingame);
-
         // 게임 시작 사운드
-        SoundManager.instance.bgmPlay(SoundManager.Bgm.Main);
+        SoundManager.instance.bgmPlay(SoundManager.Bgm.Ingame);
 
         // 점수 증가 & 블럭 강화
         StartCoroutine(AutoAddScore());
