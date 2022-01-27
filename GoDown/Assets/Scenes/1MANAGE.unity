@@ -783,6 +783,7 @@ MonoBehaviour:
   bgmClip:
   - {fileID: 8300000, guid: e04295e11d1757c4489130fa13c295e5, type: 3}
   - {fileID: 8300000, guid: 35821abebc645254b953b38dd28bfff8, type: 3}
+  - {fileID: 8300000, guid: d5bcdf2e8d5319c44aea7500fb301b1c, type: 3}
   sfxPlayer:
   - {fileID: 129145775}
   - {fileID: 1564219192}
