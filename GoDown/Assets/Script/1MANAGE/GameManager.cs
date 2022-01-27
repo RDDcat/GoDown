@@ -70,9 +70,11 @@ public class GameManager : MonoBehaviour
         // 배경 끄기
         CloseBackGround();
 
-        
+        // 배경음 전환
+        SoundManager.instance.bgmPlay(SoundManager.Bgm.Ingame);
+
         // 게임 시작 사운드
-                
+        SoundManager.instance.bgmPlay(SoundManager.Bgm.Main);
 
         // 점수 증가 & 블럭 강화
         StartCoroutine(AutoAddScore());
@@ -244,6 +246,9 @@ public class GameManager : MonoBehaviour
 
         // 결과창 옮기기
         GameOver.position = new Vector2(GameOver.position.x, -2400);
+
+        // 배경음 전환
+        SoundManager.instance.bgmPlay(SoundManager.Bgm.Main);
     }
 
     public void GameOverButton()

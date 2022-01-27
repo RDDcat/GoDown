@@ -7,8 +7,10 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance;
 
     public AudioSource bgmPlayer;
+    public AudioClip[] bgmClip;
     public AudioSource[] sfxPlayer;
     public AudioClip[] sfxClip;
+    public enum Bgm { Main, Ingame };
     public enum Sfx { Click, Dead, Break};
     int sfxCursor;
 
@@ -17,8 +19,25 @@ public class SoundManager : MonoBehaviour
         instance = this;
 
         //배경음 시작
+        bgmPlay(Bgm.Main);
+    }
+
+    public void bgmPlay(Bgm type)
+    {
+        switch (type)
+        {
+            case Bgm.Main:
+                bgmPlayer.clip = bgmClip[0];
+                break;
+            case Bgm.Ingame:
+                bgmPlayer.clip = bgmClip[1];
+                break;
+        }
+
+        //배경음 재생
         bgmPlayer.Play();
     }
+
 
     public void sfxPlay(Sfx type)
     {
