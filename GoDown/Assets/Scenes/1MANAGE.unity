@@ -784,16 +784,16 @@ MonoBehaviour:
   SFX_Group: {fileID: 1429475332}
   bgmPlayer: {fileID: 1618783810}
   bgmClip:
-  - {fileID: 8300000, guid: 107b393660b61a0469ffbbecb8d52551, type: 3}
-  - {fileID: 8300000, guid: 107b393660b61a0469ffbbecb8d52551, type: 3}
+  - {fileID: 8300000, guid: e04295e11d1757c4489130fa13c295e5, type: 3}
+  - {fileID: 8300000, guid: 35821abebc645254b953b38dd28bfff8, type: 3}
   sfxPlayer:
   - {fileID: 129145775}
   - {fileID: 1564219192}
   - {fileID: 248662942}
   sfxClip:
   - {fileID: 8300000, guid: 65a7e8af42b69604782f7df08f9d9cc2, type: 3}
-  - {fileID: 8300000, guid: 6907cba7e1585ba41a80fce65f3446fe, type: 3}
-  - {fileID: 8300000, guid: 65a7e8af42b69604782f7df08f9d9cc2, type: 3}
+  - {fileID: 8300000, guid: 4dbcc52e6e25ab94fb6f3e33287918f7, type: 3}
+  - {fileID: 8300000, guid: 2e342f1dfe95cb54baee2c8ace583f2f, type: 3}
 --- !u!1 &814078268
 GameObject:
   m_ObjectHideFlags: 0
@@ -1347,7 +1347,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.05
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
   Mute: 0
