@@ -121,7 +121,7 @@ public class SpawnManager : MonoBehaviour
 
     public float SpawnLayer(int layerNumber)
     {
-        StartCoroutine(SpawnLayerCorutine(layerNumber/2, 0.2f));
+        StartCoroutine(SpawnLayerCorutine(layerNumber/6, 0.2f));
         return 5f + (layerNumber * 0.1f);
     }
 
