@@ -148,5 +148,5 @@ MonoBehaviour:
   speed: 0
   score: 0
   resistance: 0
-  blockLv: 1
+  blockLv: 2
   isBlocksMove: 1

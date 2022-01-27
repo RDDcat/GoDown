@@ -187,7 +187,9 @@ public class GameManager : MonoBehaviour
 
     public void GameEnd()
     {
-        Debug.Log("게임 엔드");
+        // 디버그
+        // Debug.Log("게임 엔드");
+
         if (!onPlay)
         {
             return;

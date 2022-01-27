@@ -215,7 +215,6 @@ public class Player : MonoBehaviour
             // 블럭 채력 받아와서 speed 감소
             if (!isFever)
             {
-                Debug.Log("블럭 업데이트");
                 Block block = collision.gameObject.GetComponent<Block>();
                 gauge = block.GetAfterGauge(gauge);
             }

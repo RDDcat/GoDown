@@ -96,6 +96,7 @@ public class Block : MonoBehaviour
                 EffectManager.SpawnFromPool("Break1", gameObject.transform.position);
                 break;
             case 2:
+                Debug.Log("이펙트 2번 플레이");
                 EffectManager.SpawnFromPool("Break2", gameObject.transform.position);
                 break;
             case 3:
