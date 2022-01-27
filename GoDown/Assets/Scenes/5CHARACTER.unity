@@ -1567,8 +1567,8 @@ MonoBehaviour:
   touch: {fileID: 312743014}
   back: {fileID: 0}
   playerSkin: {fileID: 1849388410}
-  animator: {fileID: 1849388412}
-  Fever1: {fileID: 1975978829}
+  playerAni: {fileID: 1849388413}
+  fever1: {fileID: 1975978829}
   gaugelimit: 100
   isFever: 0
 --- !u!1001 &1499552917

@@ -146,19 +146,23 @@ public class Player : MonoBehaviour
     IEnumerator DoFever()
     {
         isFever = true;
-        Debug.Log("피버타임 발동 Check 1");
-
-        fever1.Play();
+        
+        try
+        {
+            fever1.Play();
+        }
+        catch
+        {
+            Debug.Log("피버 이펙트 플레이 오류");
+        }
+        
 
         yield return new WaitForSeconds(2.5f);
-        Debug.Log("피버타임 발동 Check 2");
-
+        
         yield return new WaitForSeconds(2.5f);
-        Debug.Log("피버타임 발동 Check 3");
-
+        
         yield return new WaitForSeconds(2.5f);
-        Debug.Log("피버타임 발동 Check 4");
-
+        
         yield return new WaitForSeconds(2.5f);
         Debug.Log("피버타임 끝");
         
