@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
-    public int hp;
+    public float hp;
     public float speed;
     public int score;
     public float resistance;
@@ -110,7 +110,7 @@ public class Block : MonoBehaviour
         return gauge - damage;
     }
 
-    public void SetBlock(int _hp, float _speed, int _score, float _resistance)
+    public void SetBlock(float _hp, float _speed, int _score, float _resistance)
     {
         hp = _hp;
         speed = _speed;

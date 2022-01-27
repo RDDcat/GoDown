@@ -131,12 +131,12 @@ public class Player : MonoBehaviour
         if(gauge > gaugelimit / 2)
         {
             // 빠른 애니메이션
-            Debug.Log("빠른 애니메이션으로 실행");
+            // Debug.Log("빠른 애니메이션으로 실행");
         }
         else
         {
             // 저속 애니메이션
-            Debug.Log("느린 애니메이션으로 실행");
+            // Debug.Log("느린 애니메이션으로 실행");
         }
     }
 

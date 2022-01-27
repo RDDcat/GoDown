@@ -48,7 +48,7 @@ public class SpawnManager : MonoBehaviour
         if (curSpawnDelay > maxSpawnDelay)
         {
             SpawnBlock();
-            maxSpawnDelay = Random.Range(0.1f, 1.25f);
+            maxSpawnDelay = Random.Range(0.15f, 1.25f);
             curSpawnDelay = 0;
         }
     }
@@ -62,6 +62,35 @@ public class SpawnManager : MonoBehaviour
         obj.transform.position = spawnPoints[ranPoint].position;
         obj.GetComponent<Block>().SetBlock(gameManager.blockHP, gameManager.blockSpeed, gameManager.blockScore, gameManager.blockResistance);
         
+    }
+
+    private void SpawnLayerBlock()
+    {
+        
+        for(int i =0; i < spawnPoints.Length; i++)
+        {            
+            GameObject obj = objectManager.MakeObj(BlockName[i%2]);
+            obj.transform.position = spawnPoints[i].position;
+        }
+        
+    }
+
+    public float SpawnLayer(int layerNumber)
+    {
+        StartCoroutine(SpawnLayerCorutine(layerNumber/10, 0.2f));
+        return 4f + (layerNumber * 0.1f);
+    }
+
+    IEnumerator SpawnLayerCorutine(int layerNumber, float waitSecond)
+    {
+        for(int i =0; i< layerNumber; i++)
+        {
+            SpawnLayerBlock();
+            yield return new WaitForSeconds(waitSecond);
+        }
+
+        yield return new WaitForSeconds(3f);
+        StartSpawn();
     }
 
     public void StopSpawn()

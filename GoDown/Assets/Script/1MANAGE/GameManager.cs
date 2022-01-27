@@ -30,12 +30,13 @@ public class GameManager : MonoBehaviour
     public float blockSpeed;
     public float blockSpeedLimit; // 게이지 상한선 업글 max 100
     public float blockAccel; // 가속도 업글 + 0.001f 씩
-    public int blockHP;
+    public float blockHP;
     public int blockScore;
     public float blockResistance;
 
 
     public bool onPlay;
+    public int level;
 
     private void Start()
     {
@@ -78,15 +79,22 @@ public class GameManager : MonoBehaviour
         StartCoroutine(AutoAddLevel());
     }
 
+
     IEnumerator AutoAddLevel()
     {
         while (true)
         {
             if (onPlay)
             {
-                blockHP += 1;
+                blockHP += 0.1f;
                 blockScore += 100;
-                yield return new WaitForSeconds(4f);
+                level += 1;
+                if (level % 34 == 0) // 15렙 마다 한번씩
+                {
+                    spawnManager.StopSpawn();                    
+                    yield return new WaitForSeconds(spawnManager.SpawnLayer(level));             
+                }
+                yield return new WaitForSeconds(1f);
             }
             else
             {
@@ -160,8 +168,6 @@ public class GameManager : MonoBehaviour
         if (player == null)
         {
             player = FindObjectOfType<Player>();
-            // 플레이어 켜기
-            player.SetPlayerOn();
         }
         if(spawnManager == null)
         {
@@ -228,6 +234,10 @@ public class GameManager : MonoBehaviour
     public void GameEndVarInit()
     {
         onPlay = false;
+        level = 0;
+        blockHP = 1;
+        blockScore = 100;
+
 
         // 계정 스코어 초기화
         AccountManager.instance.InitVariables();
