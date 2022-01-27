@@ -71,14 +71,20 @@ public class GameManager : MonoBehaviour
         CloseBackGround();
 
         // 게임 시작 사운드
-        SoundManager.instance.bgmPlay(SoundManager.Bgm.Ingame);
-        SoundManager.instance.sfxPlay(SoundManager.Sfx.Next);
+        StartCoroutine(IngameSound());
 
         // 점수 증가 & 블럭 강화
         StartCoroutine(AutoAddScore());
         StartCoroutine(AutoAddLevel());
     }
 
+    IEnumerator IngameSound()
+    {
+        SoundManager.instance.bgmPlay(SoundManager.Bgm.Next);
+        yield return new WaitForSeconds(1.5f);
+        SoundManager.instance.bgmPlay(SoundManager.Bgm.Ingame);
+        yield return new WaitForSeconds(1.5f);
+    }
 
     IEnumerator AutoAddLevel()
     {

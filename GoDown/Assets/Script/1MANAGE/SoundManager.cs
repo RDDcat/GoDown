@@ -13,8 +13,8 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] bgmClip;
     public AudioSource[] sfxPlayer;
     public AudioClip[] sfxClip;
-    public enum Bgm { Main, Ingame };
-    public enum Sfx { Click, Dead, Break, Next};
+    public enum Bgm { Main, Ingame, Next };
+    public enum Sfx { Click, Dead, Break};
     int sfxCursor;
 
     private void Start()
@@ -35,6 +35,9 @@ public class SoundManager : MonoBehaviour
             case Bgm.Ingame:
                 bgmPlayer.clip = bgmClip[1];
                 break;
+            case Bgm.Next:
+                bgmPlayer.clip = bgmClip[2];
+                break;
         }
 
         //배경음 재생
@@ -54,9 +57,6 @@ public class SoundManager : MonoBehaviour
                 break;
             case Sfx.Break:
                 sfxPlayer[sfxCursor].clip = sfxClip[2];
-                break;
-            case Sfx.Next:
-                sfxPlayer[sfxCursor].clip = sfxClip[3];
                 break;
         }
 
