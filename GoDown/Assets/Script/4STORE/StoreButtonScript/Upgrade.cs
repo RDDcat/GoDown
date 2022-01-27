@@ -61,7 +61,7 @@ public class Upgrade : MonoBehaviour
         SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
 
         // 돈소모
-        AccountManager.instance.accountGold -= AccountManager.instance.accountVO.Upgrade1 * 10;
+        AccountManager.instance.accountGold -= (AccountManager.instance.accountVO.Upgrade1 + 1) * 10;
 
         // 업그레이드 저장
         AccountManager.instance.accountVO.Upgrade1 += 1;
@@ -70,7 +70,7 @@ public class Upgrade : MonoBehaviour
         blockAccelText.text = ((AccountManager.instance.accountVO.Upgrade1 + 1) * 10).ToString();
 
         // 강화
-        AccountManager.instance.accountVO.blockSpeed += blockSpeed;
+        AccountManager.instance.accountVO.blockAccel += blockAccel;
 
         blockAccelLevelText.text = AccountManager.instance.accountVO.Upgrade1.ToString();
 
@@ -93,7 +93,7 @@ public class Upgrade : MonoBehaviour
         SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
 
         // 돈소모
-        AccountManager.instance.accountGold -= AccountManager.instance.accountVO.Upgrade2 * 10;
+        AccountManager.instance.accountGold -= (AccountManager.instance.accountVO.Upgrade2 + 1) * 10;
 
         // 업그레이드 저장
         AccountManager.instance.accountVO.Upgrade2 += 1;
@@ -119,7 +119,7 @@ public class Upgrade : MonoBehaviour
         SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
 
         // 돈소모
-        AccountManager.instance.accountGold -= AccountManager.instance.accountVO.Upgrade3 * 10;
+        AccountManager.instance.accountGold -= (AccountManager.instance.accountVO.Upgrade3 + 1) * 10;
 
         // 업그레이드 저장
         AccountManager.instance.accountVO.Upgrade3 += 1;
@@ -147,7 +147,7 @@ public class Upgrade : MonoBehaviour
         SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
 
         // 돈소모
-        AccountManager.instance.accountGold -= AccountManager.instance.accountVO.Upgrade4 * 10;
+        AccountManager.instance.accountGold -= (AccountManager.instance.accountVO.Upgrade4 + 1) * 10;
 
         // 업그레이드 저장
         AccountManager.instance.accountVO.Upgrade4 += 1;
@@ -174,7 +174,7 @@ public class Upgrade : MonoBehaviour
         SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
 
         // 돈소모
-        AccountManager.instance.accountGold -= AccountManager.instance.accountVO.Upgrade5 * 10;
+        AccountManager.instance.accountGold -= (AccountManager.instance.accountVO.Upgrade5 + 1) * 10;
 
         // 업그레이드 저장
         AccountManager.instance.accountVO.Upgrade5 += 1;
@@ -201,7 +201,7 @@ public class Upgrade : MonoBehaviour
         SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
 
         // 돈소모
-        AccountManager.instance.accountGold -= AccountManager.instance.accountVO.Upgrade6 * 10;
+        AccountManager.instance.accountGold -= (AccountManager.instance.accountVO.Upgrade6 + 1) * 10;
 
         // 업그레이드 저장
         AccountManager.instance.accountVO.Upgrade6 += 1;

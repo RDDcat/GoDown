@@ -5021,10 +5021,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25363b2f501c5d14c95d15cb945d21d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockAccel: 0.1
+  blockAccel: 0.05
   blockSpeedLimit: 0.25
   blockSpeed: 0.25
-  blockResistance: 1
+  blockResistance: 20
   playerSpeed: 0.005
   multiplyGold: 0.002
   blockAccelText: {fileID: 1562343966}
