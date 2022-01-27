@@ -6,6 +6,9 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
+    public GameObject BGM_Group;
+    public GameObject SFX_Group;
+
     public AudioSource bgmPlayer;
     public AudioClip[] bgmClip;
     public AudioSource[] sfxPlayer;
@@ -58,5 +61,25 @@ public class SoundManager : MonoBehaviour
         sfxPlayer[sfxCursor].Play();
         //효과음 커서작동
         sfxCursor = (sfxCursor + 1) % sfxPlayer.Length;
+    }
+
+    public void OnOff_BGM(bool on)
+    {
+        SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
+        //브금 온오프
+    }
+    public void OnOff_SFX(bool on)
+    {
+        SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
+        //효과음 온오프
+        if (on)
+        {
+            SFX_Group.SetActive(true);
+            SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
+        }
+        else
+        {
+            SFX_Group.SetActive(false);
+        }
     }
 }
