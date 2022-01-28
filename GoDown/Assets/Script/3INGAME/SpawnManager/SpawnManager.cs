@@ -68,7 +68,18 @@ public class SpawnManager : MonoBehaviour
         if (curSpawnDelay > maxSpawnDelay)
         {
             SpawnBlock();
-            maxSpawnDelay = Random.Range(0.4f, 1.5f);
+            if(gameManager.blockSpeed < 9f)
+            {
+                maxSpawnDelay = Random.Range(0.8f, 2f);
+            }
+            else if (gameManager.blockSpeed < 24f && gameManager.blockSpeed >= 9f)
+            {
+                maxSpawnDelay = Random.Range(0.6f, 1.6f);
+            }
+            else
+            {
+                maxSpawnDelay = Random.Range(0.25f, 1f);
+            }
             curSpawnDelay = 0;
         }
     }

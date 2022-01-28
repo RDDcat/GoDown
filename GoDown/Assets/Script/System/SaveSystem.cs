@@ -60,8 +60,8 @@ public static class SaveSystem
             Debug.Log("어카운트 브이오 생성");
             accountVO = new AccountVO();
             accountVO.multiplyGold = 1;
-            accountVO.blockSpeed = 5;
-            accountVO.blockSpeedLimit = 20;
+            accountVO.blockSpeed = 7;
+            accountVO.blockSpeedLimit = 25;
             accountVO.blockAccel = 2;
             accountVO.playerSpeed = 5;
             accountVO.blockResistance = 0;
