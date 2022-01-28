@@ -162,13 +162,26 @@ public class Player : MonoBehaviour
         }
 
         gaugeSlider.OpenFeverSlider();
-        yield return new WaitForSeconds(2.5f);
-        gaugeSlider.SetFeverSlider(0.25f);
-        yield return new WaitForSeconds(2.5f);
-        gaugeSlider.SetFeverSlider(0.25f);
-        yield return new WaitForSeconds(2.5f);
-        gaugeSlider.SetFeverSlider(0.25f);
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1f); // 1
+        gaugeSlider.SetFeverSlider(0.1f);
+        yield return new WaitForSeconds(1f); // 2
+        gaugeSlider.SetFeverSlider(0.1f);
+        yield return new WaitForSeconds(1f); // 3
+        gaugeSlider.SetFeverSlider(0.1f);
+        yield return new WaitForSeconds(1f); // 4
+        gaugeSlider.SetFeverSlider(0.1f);
+        yield return new WaitForSeconds(1f); // 5
+        gaugeSlider.SetFeverSlider(0.1f);
+        yield return new WaitForSeconds(1f); // 6
+        gaugeSlider.SetFeverSlider(0.1f);
+        yield return new WaitForSeconds(1f); // 7
+        gaugeSlider.SetFeverSlider(0.1f);
+        yield return new WaitForSeconds(1f); // 8
+        gaugeSlider.SetFeverSlider(0.1f);
+        yield return new WaitForSeconds(1f); // 9
+        gaugeSlider.SetFeverSlider(0.1f);
+        yield return new WaitForSeconds(1f); // 10
+
         gaugeSlider.CloseFeverSlider();
         Debug.Log("피버타임 끝");
         

@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
         SoundManager.instance.bgmPlay(SoundManager.Bgm.Next);
         yield return new WaitForSeconds(1.5f);
         SoundManager.instance.bgmPlay(SoundManager.Bgm.Ingame);
-        yield return new WaitForSeconds(1.5f);
+        yield break;
     }
 
     IEnumerator AutoAddLevel()
@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                yield return null;
+                yield break;
             }
         }
     }
@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                yield return null;
+                yield break;
             }
         }        
     }
