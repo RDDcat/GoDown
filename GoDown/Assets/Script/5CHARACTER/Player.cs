@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
         touch.MeltTouch();
         gaugelimit = gameManager.blockSpeedLimit;
         accel = gameManager.blockAccel;
-        guide = gaugelimit / 7f;
+        guide = gaugelimit / 8f;
 
         playerAni = FindObjectOfType<PlayerAni>();
         feverEffect = FindObjectOfType<FeverEffect>();
@@ -135,7 +135,7 @@ public class Player : MonoBehaviour
     {
         // camera.
         float container = gauge / guide;
-        camera.m_Lens.OrthographicSize = 10 + container;
+        camera.m_Lens.OrthographicSize = 8 + container;
     }
 
     public void Fever()
@@ -243,7 +243,7 @@ public class Player : MonoBehaviour
 
     void IsPlayerDead()
     {
-        if(gauge < 1)
+        if(gauge < 2.5f)
         {
             // 플레이어 사망
             

@@ -61,7 +61,7 @@ public static class SaveSystem
             accountVO = new AccountVO();
             accountVO.multiplyGold = 1;
             accountVO.blockSpeed = 5;
-            accountVO.blockSpeedLimit = 10;
+            accountVO.blockSpeedLimit = 20;
             accountVO.blockAccel = 2;
             accountVO.playerSpeed = 5;
             accountVO.blockResistance = 0;
