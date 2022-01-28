@@ -15,7 +15,7 @@ public class PlayerAni : MonoBehaviour
 
     public void HighSpeedAni()
     {
-        if (player.gauge > player.gaugelimit / 2)
+        if (player.gauge > (player.gaugelimit / 3)*2)
         {
             // 빠른 애니메이션
             // Debug.Log("빠른 애니메이션으로 실행");

@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     public SpriteRenderer playerSkin;
 
     public PlayerAni playerAni;
+    public FeverEffect feverEffect;
     public ParticleSystem fever1;
 
     public float gaugelimit;
@@ -50,6 +51,7 @@ public class Player : MonoBehaviour
         guide = gaugelimit / 9f;
 
         playerAni = FindObjectOfType<PlayerAni>();
+        feverEffect = FindObjectOfType<FeverEffect>();
     }
 
     private void FixedUpdate()
@@ -150,6 +152,7 @@ public class Player : MonoBehaviour
         try
         {
             fever1.Play();
+            StartCoroutine(FeverHighLight());
         }
         catch
         {
@@ -171,6 +174,19 @@ public class Player : MonoBehaviour
         isSpeedDelay = false;
 
         fever1.Stop();
+    }
+
+    IEnumerator FeverHighLight()
+    {
+        feverEffect.OnOff_Fever();
+        while (isFever)
+        {
+            feverEffect.ShakeLeftRight();
+            yield return new WaitForSeconds(0.1f);
+            feverEffect.ShakeUpDown();
+            yield return new WaitForSeconds(0.1f);
+        }
+        feverEffect.OnOff_Fever();
     }
 
     void GameManagerMapping()
