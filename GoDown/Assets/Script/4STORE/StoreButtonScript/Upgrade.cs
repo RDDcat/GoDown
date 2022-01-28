@@ -53,7 +53,7 @@ public class Upgrade : MonoBehaviour
     public void UpgradeBlockAccel()
     {
         // ¸¸¾à µ·ÀÌ ¾ø´Ù¸é ½ºÅµ
-        if (AccountManager.instance.accountGold < AccountManager.instance.accountVO.Upgrade1 * 10)
+        if (AccountManager.instance.accountGold < (AccountManager.instance.accountVO.Upgrade1 + 1) * 10)
         {            
             return;
         }
@@ -80,7 +80,7 @@ public class Upgrade : MonoBehaviour
     public void UpgradeBlockSpeedLimit()
     {
         // ¸¸¾à µ·ÀÌ ¾ø´Ù¸é ½ºÅµ
-        if (AccountManager.instance.accountGold < AccountManager.instance.accountVO.Upgrade2 * 10)
+        if (AccountManager.instance.accountGold < (AccountManager.instance.accountVO.Upgrade2 + 1) * 10)
         {
             return;
         }
@@ -111,7 +111,7 @@ public class Upgrade : MonoBehaviour
     public void UpgradeBlockSpeed()
     {
         // ¸¸¾à µ·ÀÌ ¾ø´Ù¸é ½ºÅµ
-        if (AccountManager.instance.accountGold < AccountManager.instance.accountVO.Upgrade3 * 10)
+        if (AccountManager.instance.accountGold < (AccountManager.instance.accountVO.Upgrade3 + 1) * 10)
         {            
             return;
         }
@@ -138,7 +138,7 @@ public class Upgrade : MonoBehaviour
     public void UpgradePlayerSpeed()
     {
         // ¸¸¾à µ·ÀÌ ¾ø´Ù¸é ½ºÅµ
-        if (AccountManager.instance.accountGold < AccountManager.instance.accountVO.Upgrade4 * 10)
+        if (AccountManager.instance.accountGold < (AccountManager.instance.accountVO.Upgrade4 + 1) * 10)
         {
             return;
         }
@@ -164,7 +164,7 @@ public class Upgrade : MonoBehaviour
     public void UpgradeBlockResistance()
     {
         // ¸¸¾à µ·ÀÌ ¾ø´Ù¸é ½ºÅµ
-        if (AccountManager.instance.accountGold < AccountManager.instance.accountVO.Upgrade5 * 10)
+        if (AccountManager.instance.accountGold < (AccountManager.instance.accountVO.Upgrade5 + 1) * 10)
         {
             return;
         }
@@ -190,7 +190,7 @@ public class Upgrade : MonoBehaviour
     public void UpgradeMultiplyGold()
     {
         // ¸¸¾à µ·ÀÌ ¾ø´Ù¸é ½ºÅµ
-        if (AccountManager.instance.accountGold < AccountManager.instance.accountVO.Upgrade6 * 10)
+        if (AccountManager.instance.accountGold < (AccountManager.instance.accountVO.Upgrade6 + 1) * 10)
         {
             return;
         }

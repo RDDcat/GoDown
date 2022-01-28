@@ -229,8 +229,8 @@ public class GameManager : MonoBehaviour
     {
         scoreText.text = AccountManager.instance.score.ToString();
         goldText.text = AccountManager.instance.GetGold().ToString();
-        multyplyText.text = "x" + AccountManager.instance.multiplyGold.ToString();
-        long rewardGold = (long)(AccountManager.instance.GetGold() * AccountManager.instance.multiplyGold);
+        multyplyText.text = "x" + AccountManager.instance.accountVO.multiplyGold.ToString();
+        long rewardGold = (long)(AccountManager.instance.GetGold() * AccountManager.instance.accountVO.multiplyGold);
         rewardGoldText.text = rewardGold.ToString();
     }
 

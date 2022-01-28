@@ -4981,7 +4981,7 @@ MonoBehaviour:
   blockSpeed: 0.25
   blockResistance: 20
   playerSpeed: 0.005
-  multiplyGold: 0.002
+  multiplyGold: 0.05
   blockAccelText: {fileID: 1562343966}
   blockSpeedLimitText: {fileID: 806281488}
   blockSpeedText: {fileID: 2127440704}

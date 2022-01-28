@@ -517,7 +517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &172128212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3121,7 +3121,6 @@ MonoBehaviour:
   accountGoldText: {fileID: 145061347}
   _score: 0
   _gold: 0
-  multiplyGold: 1.02
 --- !u!1 &2146382864
 GameObject:
   m_ObjectHideFlags: 0

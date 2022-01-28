@@ -18,7 +18,6 @@ public class AccountManager : MonoBehaviour
 
     public long _score;
     public long _gold;
-    public float multiplyGold;
 
     public long score
     {
