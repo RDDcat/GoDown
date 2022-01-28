@@ -134,8 +134,7 @@ public class Upgrade : MonoBehaviour
 
         SaveUpgradeDate();
     }
-
-    
+        
     public void UpgradePlayerSpeed()
     {
         // ¸¸¾à µ·ÀÌ ¾ø´Ù¸é ½ºÅµ
@@ -161,7 +160,6 @@ public class Upgrade : MonoBehaviour
 
         SaveUpgradeDate();
     }
-
 
     public void UpgradeBlockResistance()
     {
@@ -189,7 +187,6 @@ public class Upgrade : MonoBehaviour
         SaveUpgradeDate();
     }
 
-
     public void UpgradeMultiplyGold()
     {
         // ¸¸¾à µ·ÀÌ ¾ø´Ù¸é ½ºÅµ
@@ -215,7 +212,6 @@ public class Upgrade : MonoBehaviour
 
         SaveUpgradeDate();
     }
-
 
     public void SaveUpgradeDate()
     {
