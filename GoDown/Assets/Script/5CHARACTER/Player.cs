@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
         touch.MeltTouch();
         gaugelimit = gameManager.blockSpeedLimit;
         accel = gameManager.blockAccel;
-        guide = gaugelimit / 9f;
+        guide = gaugelimit / 7f;
 
         playerAni = FindObjectOfType<PlayerAni>();
         feverEffect = FindObjectOfType<FeverEffect>();
@@ -148,7 +148,10 @@ public class Player : MonoBehaviour
     IEnumerator DoFever()
     {
         isFever = true;
-        
+
+        gauge += 2;
+        camera.m_Lens.OrthographicSize = 19;
+
         try
         {
             fever1.Play();
