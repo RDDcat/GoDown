@@ -5,27 +5,61 @@ using UnityEngine.UI;
 
 public class FeverEffect : MonoBehaviour
 {
-    RectTransform rectTrans;
     public GameObject FeverHighlight;
     bool isFever = false;
+    int rand = 0;
+    int pre_rand;
 
-    private void Awake()
+    public void RandomShake()
     {
-        rectTrans = GetComponent<RectTransform>();
+        rand = Random.Range(0, 4);
+
+        //연속 같은 번호 제거
+        if (pre_rand == rand)
+        {
+            rand = (rand + 1)%4;
+            Debug.Log("연속 번호 제거");
+        }
+        switch(rand){
+            case 0:
+                ShakeOrig();
+                pre_rand = rand;
+                break;
+            case 1:
+                ShakeLeftRight();
+                pre_rand = rand;
+                break;
+            case 2:
+                ShakeUpDown();
+                pre_rand = rand;
+                break;
+            case 3:
+                Shakediagonal();
+                pre_rand = rand;
+                break;
+        }
     }
 
-    public void ShakeOrig()
+    void ShakeOrig()
     {
-        rectTrans.localScale = new Vector3(1, 1);
+        FeverHighlight.transform.localScale = new Vector3(1, 1);
+        Debug.Log("피버 반전1");
     }
-    public void ShakeLeftRight()
+    void ShakeLeftRight()
     {
-        rectTrans.localScale = new Vector3(-1,1);
+        FeverHighlight.transform.localScale = new Vector3(-1,1);
+        Debug.Log("피버 반전2");
     }
 
-    public void ShakeUpDown()
+    void ShakeUpDown()
     {
-        rectTrans.localScale = new Vector3(1, -1);
+        FeverHighlight.transform.localScale = new Vector3(1, -1);
+        Debug.Log("피버 반전3");
+    }
+    void Shakediagonal()
+    {
+        FeverHighlight.transform.localScale = new Vector3(-1, -1);
+        Debug.Log("피버 반전4");
     }
 
     public void OnOff_Fever()

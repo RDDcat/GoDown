@@ -181,9 +181,7 @@ public class Player : MonoBehaviour
         feverEffect.OnOff_Fever();
         while (isFever)
         {
-            feverEffect.ShakeLeftRight();
-            yield return new WaitForSeconds(0.1f);
-            feverEffect.ShakeUpDown();
+            feverEffect.RandomShake();
             yield return new WaitForSeconds(0.1f);
         }
         feverEffect.OnOff_Fever();
