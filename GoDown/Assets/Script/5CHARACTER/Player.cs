@@ -161,15 +161,16 @@ public class Player : MonoBehaviour
         {
             Debug.Log("피버 이펙트 플레이 오류");
         }
-        
 
+        gaugeSlider.OpenFeverSlider();
         yield return new WaitForSeconds(2.5f);
-        
+        gaugeSlider.SetFeverSlider(0.25f);
         yield return new WaitForSeconds(2.5f);
-        
+        gaugeSlider.SetFeverSlider(0.25f);
         yield return new WaitForSeconds(2.5f);
-        
+        gaugeSlider.SetFeverSlider(0.25f);
         yield return new WaitForSeconds(2.5f);
+        gaugeSlider.CloseFeverSlider();
         Debug.Log("피버타임 끝");
         
         gauge = gauge / 3;
