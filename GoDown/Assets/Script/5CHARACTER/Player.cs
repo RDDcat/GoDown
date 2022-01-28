@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
         {
             _gauge = value;
             // Debug.Log("게이지 호출 갯수");
-            gaugeSlider.SetGaugeSlider(value);
+            gaugeSlider.UpdateGaugeSlider(value);
         }
     }
     public MoblieTouch touch;
@@ -45,13 +45,12 @@ public class Player : MonoBehaviour
     {
         GameManagerMapping();
         Mapping();
+
+        gaugeSlider.SetSlider();
         touch.MeltTouch();
         gaugelimit = gameManager.blockSpeedLimit;
         accel = gameManager.blockAccel;
         guide = gaugelimit / 8f;
-
-        playerAni = FindObjectOfType<PlayerAni>();
-        feverEffect = FindObjectOfType<FeverEffect>();
     }
 
     private void FixedUpdate()
@@ -211,6 +210,8 @@ public class Player : MonoBehaviour
             blocks = FindObjectOfType<Blocks>();
             // back = FindObjectOfType<BackGround2>();
             backGround = FindObjectOfType<BackGround>();
+            playerAni = FindObjectOfType<PlayerAni>();
+            feverEffect = FindObjectOfType<FeverEffect>();
         }
         catch
         {

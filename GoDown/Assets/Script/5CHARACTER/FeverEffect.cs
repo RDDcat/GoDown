@@ -18,7 +18,6 @@ public class FeverEffect : MonoBehaviour
         if (pre_rand == rand)
         {
             rand = (rand + 1)%4;
-            Debug.Log("연속 번호 제거");
         }
         switch(rand){
             case 0:
@@ -42,24 +41,20 @@ public class FeverEffect : MonoBehaviour
 
     void ShakeOrig()
     {
-        FeverHighlight.transform.localScale = new Vector3(1, 1);
-        Debug.Log("피버 반전1");
+        FeverHighlight.transform.localScale = new Vector3(1, 1);       
     }
     void ShakeLeftRight()
     {
-        FeverHighlight.transform.localScale = new Vector3(-1,1);
-        Debug.Log("피버 반전2");
+        FeverHighlight.transform.localScale = new Vector3(-1,1);        
     }
 
     void ShakeUpDown()
     {
-        FeverHighlight.transform.localScale = new Vector3(1, -1);
-        Debug.Log("피버 반전3");
+        FeverHighlight.transform.localScale = new Vector3(1, -1);        
     }
     void Shakediagonal()
     {
         FeverHighlight.transform.localScale = new Vector3(-1, -1);
-        Debug.Log("피버 반전4");
     }
 
     public void OnOff_Fever()

@@ -10,8 +10,19 @@ public class Gauge : MonoBehaviour
     public RectTransform backGround;
 
     public Player player;
+       
 
-    public void SetGaugeSlider(float gauge)
+    public void SetSlider()
+    {
+        float max = (10000 - ((player.gameManager.blockSpeedLimit - 10) * 125));
+        if(max < 0)
+        {
+            max = 0;
+        }
+        backGround.offsetMax = new Vector2(0, max);
+    }
+
+    public void UpdateGaugeSlider(float gauge)
     {
         slider.value = 1 - (gauge / player.gaugelimit);
     }
