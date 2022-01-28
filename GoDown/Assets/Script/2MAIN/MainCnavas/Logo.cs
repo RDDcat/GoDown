@@ -7,18 +7,18 @@ using DG.Tweening;
 public class Logo : MonoBehaviour
 {
     public RectTransform logo;
+    int clickCount;
+    public GameObject fps_Check;
+
 
     bool isDelay;
     bool isToggle;
 
-    private void Start()
+/*    private void Awake()
     {
-        {
-            
-        }
-        
-    }
-    
+        fps_Check = FindObjectOfType<FPS_Check>();
+    }*/
+
 
     private void FixedUpdate()
     {
@@ -52,5 +52,23 @@ public class Logo : MonoBehaviour
         yield return new WaitForSeconds(5f);
         
         isDelay = false;
+    }
+
+    public void ShowFPS()
+    {
+        bool fpsOn = false;
+        clickCount++;
+        SoundManager.instance.sfxPlay(SoundManager.Sfx.Dead);
+        //Debug.Log("Ã¶ÆÜ"+clickCount);
+        if ((clickCount % 6 == 5) && fpsOn == false)
+        {
+            fps_Check.SetActive(true);
+            fpsOn = true;
+        }
+        else
+        {
+            fps_Check.SetActive(false);
+            fpsOn = false;
+        }
     }
 }
