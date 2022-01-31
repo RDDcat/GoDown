@@ -10,7 +10,17 @@ public class Gauge : MonoBehaviour
     public RectTransform backGround;
 
     public Player player;
-       
+
+    bool isFever;
+
+    private void FixedUpdate()
+    {
+        if(isFever)
+        {
+            feverSlider.transform.position = player.transform.position;
+        }
+    }
+
 
     public void SetSlider()
     {
@@ -35,11 +45,13 @@ public class Gauge : MonoBehaviour
     public void CloseFeverSlider()
     {
         feverSlider.gameObject.SetActive(false);
+        isFever = false;
     }
 
     public void OpenFeverSlider()
     {
-        feverSlider.gameObject.SetActive(true);    
+        feverSlider.gameObject.SetActive(true);
+        isFever = true;
         feverSlider.value = 1;
     }
 }

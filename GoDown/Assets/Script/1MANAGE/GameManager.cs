@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator AutoAddLevel()
     {
+        int delayTime = 18;
         while (true)
         {
             if (onPlay)
@@ -95,10 +96,12 @@ public class GameManager : MonoBehaviour
                 blockHP += 0.2f;
                 blockScore += 10;
                 level += 1;
-                if (level % 14 == 0) // 28렙 마다 한번씩
+                MoveMiniMap(delayTime);
+                if (level % delayTime == 0) // 28렙 마다 한번씩
                 {
-                    spawnManager.StopSpawn();                    
-                    yield return new WaitForSeconds(spawnManager.SpawnLayer(level));             
+                    spawnManager.StopSpawn();
+                    yield return new WaitForSeconds(spawnManager.SpawnLayer(level));
+                    ResetMiniMap();                    
                 }
                 yield return new WaitForSeconds(2f);
             }
@@ -107,6 +110,18 @@ public class GameManager : MonoBehaviour
                 yield break;
             }
         }
+    }
+
+    void MoveMiniMap(int _step)
+    {
+        // 슬라임이 일정 거리만큼 내려감
+        player.MoveMiniMap(_step);
+    }
+
+    void ResetMiniMap()
+    {
+        // 슬라임이 다시 올라옴
+        player.ResetMiniMap();
     }
 
 

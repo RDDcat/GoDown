@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     public Blocks blocks;
     public BackGround backGround;
     public Gauge gaugeSlider;
+    public GameObject slimeHandler;
+    public GameObject[] handlerpos;
 
     public float _gauge;
     public float gauge
@@ -293,5 +295,16 @@ public class Player : MonoBehaviour
     {
         playerSkin.enabled = false; 
         GetComponent<CapsuleCollider2D>().enabled = false;
+    }
+
+    public void MoveMiniMap(int _step)
+    {
+        // ½½
+        _step = 0;
+    }
+
+    public void ResetMiniMap()
+    {
+
     }
 }

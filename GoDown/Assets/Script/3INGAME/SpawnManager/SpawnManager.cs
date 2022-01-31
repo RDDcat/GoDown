@@ -113,8 +113,7 @@ public class SpawnManager : MonoBehaviour
     }
 
     private void SpawnLayerBlock()
-    {
-        Debug.Log("레이어 생성!!");
+    {        
         for(int i =0; i < spawnPoints.Length; i++)
         {
             try
