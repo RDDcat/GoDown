@@ -70,15 +70,19 @@ public class SpawnManager : MonoBehaviour
             SpawnBlock();
             if(gameManager.blockSpeed < 9f)
             {
-                maxSpawnDelay = Random.Range(0.8f, 2f);
+                maxSpawnDelay = Random.Range(0.6f, 2f);
             }
             else if (gameManager.blockSpeed < 24f && gameManager.blockSpeed >= 9f)
             {
-                maxSpawnDelay = Random.Range(0.6f, 1.6f);
+                maxSpawnDelay = Random.Range(0.3f, 1.4f);
+            }
+            else if (gameManager.blockSpeed < 48f && gameManager.blockSpeed >= 24f)
+            {
+                maxSpawnDelay = Random.Range(0.3f, 1.1f);
             }
             else
             {
-                maxSpawnDelay = Random.Range(0.25f, 1f);
+                maxSpawnDelay = Random.Range(0.15f, 0.75f);
             }
             curSpawnDelay = 0;
         }
@@ -132,8 +136,8 @@ public class SpawnManager : MonoBehaviour
 
     public float SpawnLayer(int layerNumber)
     {
-        StartCoroutine(SpawnLayerCorutine(layerNumber/6, 0.2f));
-        return 5f + (layerNumber * 0.1f);
+        StartCoroutine(SpawnLayerCorutine(layerNumber/5, 0.2f));
+        return 3f + (layerNumber * 0.1f);
     }
 
     IEnumerator SpawnLayerCorutine(int layerNumber, float waitSecond)
@@ -144,7 +148,7 @@ public class SpawnManager : MonoBehaviour
             yield return new WaitForSeconds(waitSecond);
         }
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         StartSpawn();
     }
 
