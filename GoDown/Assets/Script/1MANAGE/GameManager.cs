@@ -271,6 +271,27 @@ public class GameManager : MonoBehaviour
         SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
     }
 
+    public void GameEndWhilePlay()
+    {
+        if (!onPlay)
+        {
+            return;
+        }
+
+        // 게임 오브젝트 스폰 중단
+        spawnManager.StopSpawn();
+
+        // 플레이어 가속 중단
+        onPlay = false;
+
+        // 게임 종료 보상 계정에 더하기
+        AccountManager.instance.SetGold();
+
+        // 계정 저장
+        AccountManager.instance.SaveAccount();
+
+        GameOverButton();
+    }
     
 
     public void UnLoadInGameScene()

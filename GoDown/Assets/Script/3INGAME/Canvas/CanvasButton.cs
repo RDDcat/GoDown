@@ -16,6 +16,9 @@ public class CanvasButton : MonoBehaviour
 
         // 퍼즈 캔버스 켜기
         pause.SetActive(true);
+
+        //효과음
+        SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
     }
 
     public void ResumeGame()
@@ -25,6 +28,22 @@ public class CanvasButton : MonoBehaviour
 
         Time.timeScale = 1;
         AudioListener.pause = false;
-        Debug.Log("게임재개");                
-    }    
+
+        //효과음
+        SoundManager.instance.sfxPlay(SoundManager.Sfx.Click);
+    }
+
+    public void EndGameWhilePlay()
+    {
+        try
+        {
+            FindObjectOfType<GameManager>().GameEndWhilePlay();
+        }
+        catch
+        {
+            Debug.LogErrorFormat("게임 매니저 찾을수 없음");
+        }
+
+        ResumeGame();
+    }
 }
