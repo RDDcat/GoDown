@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
         AccountManager.instance.OnGameCanvas();
 
         // 배경 끄기
-        CloseBackGround();
+        CloseBackGround();                
 
         // 게임 시작 사운드
         StartCoroutine(IngameSound());
@@ -96,8 +96,9 @@ public class GameManager : MonoBehaviour
                 blockHP += 0.2f;
                 blockScore += 10;
                 level += 1;
-                MoveMiniMap(delayTime);
-                if (level % delayTime == 0) // 28렙 마다 한번씩
+                int delaylevel = level % delayTime;
+                MoveMiniMap(delayTime, delaylevel);
+                if (delaylevel == 0) // 28렙 마다 한번씩
                 {
                     spawnManager.StopSpawn();
                     yield return new WaitForSeconds(spawnManager.SpawnLayer(level));
@@ -112,16 +113,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void MoveMiniMap(int _step)
+    void MoveMiniMap(int _step, int _delaylevel)
     {
-        // 슬라임이 일정 거리만큼 내려감
-        player.MoveMiniMap(_step);
+        if (player != null)
+        {
+            Debug.Log("엥");
+            // 슬라임이 일정 거리만큼 내려감
+            player.MoveMiniMap(_step, _delaylevel);
+        }
+        
+        
     }
 
     void ResetMiniMap()
     {
-        // 슬라임이 다시 올라옴
-        player.ResetMiniMap();
+        if (player != null)
+        {
+            Debug.Log("엥엥엥엥");
+            // 슬라임이 다시 올라옴
+            player.ResetMiniMap();
+        }
     }
 
 
@@ -189,6 +200,9 @@ public class GameManager : MonoBehaviour
         if (player == null)
         {
             player = FindObjectOfType<Player>();
+
+            // 미니맵 초기화
+            ResetMiniMap();
         }
         if(spawnManager == null)
         {

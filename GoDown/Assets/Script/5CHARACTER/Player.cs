@@ -43,16 +43,19 @@ public class Player : MonoBehaviour
     bool isSpeedDelay;
     public bool isFever;
 
-    private void Start()
+    private void Awake()
     {
         GameManagerMapping();
         Mapping();
+    }
 
-        gaugeSlider.SetSlider();
+    private void Start()
+    {
         touch.MeltTouch();
-        gaugelimit = gameManager.blockSpeedLimit;
-        accel = gameManager.blockAccel;
         guide = gaugelimit / 8f;
+        gaugelimit = gameManager.blockSpeedLimit;
+        accel = gameManager.blockAccel;        
+        gaugeSlider.SetSlider();
     }
 
     private void FixedUpdate()
@@ -297,14 +300,22 @@ public class Player : MonoBehaviour
         GetComponent<CapsuleCollider2D>().enabled = false;
     }
 
-    public void MoveMiniMap(int _step)
+    float y;
+    public void MoveMiniMap(int _step, int _delaylevel)
     {
-        // 슬
-        _step = 0;
+        
+        if(y == 0)
+        {
+            y = (handlerpos[0].transform.position.y - handlerpos[1].transform.position.y) / _step;
+        }
+        
+        Debug.Log("움직여잇 " + y);
+        slimeHandler.transform.position = new Vector2(slimeHandler.transform.position.x, slimeHandler.transform.position.y - y);
     }
 
     public void ResetMiniMap()
     {
-
+        Debug.Log("초기화~");
+        slimeHandler.transform.position = handlerpos[0].transform.position;
     }
 }
