@@ -5,6 +5,8 @@ using UnityEngine;
 public class OnOffSound : MonoBehaviour
 {
     SoundManager soundManager;
+    public GameObject control1_Img;
+    public GameObject control2_Img;
 
     bool BGMOn, SFXOn, SWTOn;
     private void Awake()
@@ -51,13 +53,19 @@ public class OnOffSound : MonoBehaviour
     {
         if (SWTOn)
         {
-            PlayerPrefs.SetInt("Touch", 1);
+            PlayerPrefs.SetInt("Touch", 1);            
             SWTOn = false;
+
+            control2_Img.SetActive(false);
+            control1_Img.SetActive(true);
         }
         else
         {
             PlayerPrefs.SetInt("Touch", 0);
             SWTOn = true;
+
+            control2_Img.SetActive(true);
+            control1_Img.SetActive(false);
         }
     }
 }
