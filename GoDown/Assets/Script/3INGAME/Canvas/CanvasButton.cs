@@ -8,8 +8,6 @@ public class CanvasButton : MonoBehaviour
 
     public void PauseGame()
     {
-        Debug.Log("일시정지");
-
         // 게임 스탑
         Time.timeScale = 0;
         AudioListener.pause = true;

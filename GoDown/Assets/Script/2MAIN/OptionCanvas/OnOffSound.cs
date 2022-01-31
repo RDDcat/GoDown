@@ -6,7 +6,7 @@ public class OnOffSound : MonoBehaviour
 {
     SoundManager soundManager;
 
-    bool BGMOn, SFXOn;
+    bool BGMOn, SFXOn, SWTOn;
     private void Awake()
     {
         soundManager = FindObjectOfType<SoundManager>();
@@ -44,6 +44,20 @@ public class OnOffSound : MonoBehaviour
         {
             soundManager.OnOff_SFXPlayer(false);
             SFXOn = true;
+        }
+    }
+
+    public void SwitchControl()
+    {
+        if (SWTOn)
+        {
+            PlayerPrefs.SetInt("Touch", 1);
+            SWTOn = false;
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Touch", 0);
+            SWTOn = true;
         }
     }
 }
