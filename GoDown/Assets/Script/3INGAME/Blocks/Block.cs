@@ -48,7 +48,7 @@ public class Block : MonoBehaviour
             if (isBlocksMove)
             {
                 // rigid.AddForce(Vector3.up * speed );
-                transform.Translate(0, speed * 0.008f, 0);
+                transform.Translate(0, speed * 0.8f * Time.deltaTime, 0);
                 //* Time.deltaTime
             }
         }        
