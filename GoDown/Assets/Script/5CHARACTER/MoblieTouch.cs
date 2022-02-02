@@ -27,7 +27,7 @@ public class MoblieTouch : MonoBehaviour
     void OnTouch()
     {
         if (isTouch)
-        {
+        {    
             TouchVer(touchVersion);
         }
 
@@ -45,13 +45,25 @@ public class MoblieTouch : MonoBehaviour
                 float offset = playerSpeed * Time.deltaTime;
                 Vector2 mousePos = Camera.main.ScreenToWorldPoint(touch.position);
 
-                if (mousePos.x - transform.position.x > 0)
+                //if (transform.position.x > -10 && transform.position.x < 10)
+
+                if (mousePos.x - transform.position.x > 0)  //오른쪽
                 {
-                    transform.position = new Vector2(transform.position.x + offset, transform.position.y);
+                    if(transform.position.x < 10)
+                    {
+                        transform.position = new Vector2(transform.position.x + offset, transform.position.y);
+                        return;
+                    }
+                    Debug.Log("오른쪽제약");
                 }
-                if (mousePos.x - transform.position.x < 0)
+                if (mousePos.x - transform.position.x < 0)  //왼쪽
                 {
-                    transform.position = new Vector2(transform.position.x - offset, transform.position.y);
+                    if (transform.position.x > -10)
+                    {
+                        transform.position = new Vector2(transform.position.x - offset, transform.position.y);
+                        return;
+                    }
+                    Debug.Log("왼쪽제약");
                 }
             }
         }
@@ -66,11 +78,21 @@ public class MoblieTouch : MonoBehaviour
 
                 if (mousePos.x - Camera.main.transform.position.x > 0)
                 {
-                    transform.position = new Vector2(transform.position.x + offset, transform.position.y);
+                    if (transform.position.x < 10)
+                    {
+                        transform.position = new Vector2(transform.position.x + offset, transform.position.y);
+                        return;
+                    }
+                    Debug.Log("오른쪽제약2");
                 }
                 else
                 {
-                    transform.position = new Vector2(transform.position.x - offset, transform.position.y);
+                    if (transform.position.x > -10)
+                    {
+                        transform.position = new Vector2(transform.position.x - offset, transform.position.y);
+                        return;
+                    }
+                    Debug.Log("왼쪽제약2");
                 }
             }
         }

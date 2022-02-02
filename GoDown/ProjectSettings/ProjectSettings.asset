@@ -245,7 +245,7 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/unityproject/smush.keystore
+  AndroidKeystoreName: C:/unitykeystore/smush.keystore
   AndroidKeyaliasName: smush
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0

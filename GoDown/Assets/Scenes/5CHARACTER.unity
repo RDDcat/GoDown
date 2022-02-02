@@ -514,6 +514,7 @@ MonoBehaviour:
   feverSlider: {fileID: 746932736}
   backGround: {fileID: 1371469103}
   player: {fileID: 1424878653}
+  playerPos: {fileID: 312743012}
 --- !u!1 &369851989
 GameObject:
   m_ObjectHideFlags: 0
@@ -2006,7 +2007,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1424878648}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
