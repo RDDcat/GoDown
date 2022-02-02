@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
     {
         if (player != null)
         {
-            Debug.Log("ø®");
+            //Debug.Log("ø®");
             // ΩΩ∂Û¿”¿Ã ¿œ¡§ ∞≈∏Æ∏∏≈≠ ≥ª∑¡∞®
             player.MoveMiniMap(_step, _delaylevel);
         }
@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
     {
         if (player != null)
         {
-            Debug.Log("ø®ø®ø®ø®");
+            //Debug.Log("ø®ø®ø®ø®");
             // ΩΩ∂Û¿”¿Ã ¥ŸΩ√ ø√∂Ûø»
             player.ResetMiniMap();
         }

@@ -309,13 +309,13 @@ public class Player : MonoBehaviour
             y = (handlerpos[0].transform.position.y - handlerpos[1].transform.position.y) / _step;
         }
         
-        Debug.Log("움직여잇 " + y);
+        //Debug.Log("움직여잇 " + y);
         slimeHandler.transform.position = new Vector2(slimeHandler.transform.position.x, slimeHandler.transform.position.y - y);
     }
 
     public void ResetMiniMap()
     {
-        Debug.Log("초기화~");
+        //Debug.Log("초기화~");
         slimeHandler.transform.position = handlerpos[0].transform.position;
     }
 }

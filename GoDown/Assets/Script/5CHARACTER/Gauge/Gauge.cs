@@ -10,16 +10,19 @@ public class Gauge : MonoBehaviour
     public RectTransform backGround;
 
     public Player player;
+    public GameObject playerPos;
 
     bool isFever;
 
-   /* private void FixedUpdate()
+    void FixedUpdate()
     {
         if(isFever)
         {
-            feverSlider.transform.position = player.transform.position + new Vector3(540, 1235);
+            Vector2 playerViewPos = Camera.main.WorldToScreenPoint(new Vector3(playerPos.transform.position.x, playerPos.transform.position.y + 5.5f));
+            feverSlider.transform.position = playerViewPos;
+            Debug.Log(" 플레이어 위치 좌표 " + playerViewPos);
         }
-    }*/
+    }
 
     public void SetSlider()
     {
