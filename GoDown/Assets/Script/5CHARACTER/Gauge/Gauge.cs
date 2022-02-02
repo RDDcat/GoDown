@@ -13,14 +13,13 @@ public class Gauge : MonoBehaviour
 
     bool isFever;
 
-    private void FixedUpdate()
+   /* private void FixedUpdate()
     {
         if(isFever)
         {
-            feverSlider.transform.position = player.transform.position;
+            feverSlider.transform.position = player.transform.position + new Vector3(540, 1235);
         }
-    }
-
+    }*/
 
     public void SetSlider()
     {
