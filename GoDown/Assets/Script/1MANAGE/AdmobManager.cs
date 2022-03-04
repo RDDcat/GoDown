@@ -15,11 +15,12 @@ public class AdmobManager : MonoBehaviour
     {
         LoadBannerAd();
         LoadRewardAd();
+        rewardAd.IsLoaded();
     }
 
     void Update()
     {
-        RewardAdsBtn.interactable = rewardAd.IsLoaded();
+        //RewardAdsBtn.interactable = rewardAd.IsLoaded();
     }
 
     AdRequest GetAdRequest()
@@ -64,12 +65,15 @@ public class AdmobManager : MonoBehaviour
         rewardAd.OnUserEarnedReward += (sender, e) =>
         {
             LogText.text = "리워드 광고 성공";
-            AccountManager.instance.GiveGold(1000);
+
+            AccountManager.instance.GiveGold(5000);
+            AccountManager.instance.SaveAccount();
         };
     }
 
     public void ShowRewardAd()
     {
+        rewardAd.IsLoaded();
         rewardAd.Show();
         LoadRewardAd();
     }

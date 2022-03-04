@@ -71,7 +71,7 @@ public class AccountManager : MonoBehaviour
         score = 0;
         gold = 0;
     }
-    public long GiveGold(int G)
+    public long GiveGold(long G)
     {
         long result = G;
         return result;
