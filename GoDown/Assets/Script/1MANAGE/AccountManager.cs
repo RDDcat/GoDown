@@ -69,9 +69,13 @@ public class AccountManager : MonoBehaviour
     {
         // 게임 종료시 변수 초기화
         score = 0;
-        gold = 10;
+        gold = 0;
     }
-
+    public long GiveGold(int G)
+    {
+        long result = G;
+        return result;
+    }
     public long GetGold()
     {
         long result = (long)Mathf.Sqrt(score) + gold * 4;

@@ -1,0 +1,77 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using GoogleMobileAds.Api;
+
+public class AdmobManager : MonoBehaviour
+{
+    public bool isTestMode;
+    public Text LogText;
+    public Button RewardAdsBtn;
+
+
+    void Start()
+    {
+        LoadBannerAd();
+        LoadRewardAd();
+    }
+
+    void Update()
+    {
+        RewardAdsBtn.interactable = rewardAd.IsLoaded();
+    }
+
+    AdRequest GetAdRequest()
+    {
+        return new AdRequest.Builder().AddTestDevice("B3ACCBF65750265A").AddTestDevice("1DF7B7CC05014E8").Build();
+    }
+
+
+
+    #region ¹è³Ê ±¤°í
+    const string bannerTestID = "ca-app-pub-3940256099942544/6300978111";
+    const string bannerID = "";
+    BannerView bannerAd;
+
+
+    void LoadBannerAd()
+    {
+        bannerAd = new BannerView(isTestMode ? bannerTestID : bannerID,
+            AdSize.SmartBanner, AdPosition.Bottom);
+        bannerAd.LoadAd(GetAdRequest());
+        ToggleBannerAd(false);
+    }
+
+    public void ToggleBannerAd(bool b)
+    {
+        if (b) bannerAd.Show();
+        else bannerAd.Hide();
+    }
+    #endregion
+
+
+    #region ¸®¿öµå ±¤°í
+    const string rewardTestID = "ca-app-pub-3940256099942544/5224354917";
+    const string rewardID = "ca-app-pub-5655985157533088/6746225803";
+    RewardedAd rewardAd;
+
+
+    void LoadRewardAd()
+    {
+        rewardAd = new RewardedAd(isTestMode ? rewardTestID : rewardID);
+        rewardAd.LoadAd(GetAdRequest());
+        rewardAd.OnUserEarnedReward += (sender, e) =>
+        {
+            LogText.text = "¸®¿öµå ±¤°í ¼º°ø";
+            AccountManager.instance.GiveGold(1000);
+        };
+    }
+
+    public void ShowRewardAd()
+    {
+        rewardAd.Show();
+        LoadRewardAd();
+    }
+    #endregion
+}
