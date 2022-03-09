@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class ShowAD : MonoBehaviour
 {
-    AdmobManager admobManager;
-
-    public void Awake()
-    {
-    }
-
     public void showAD()
     {
-        admobManager.ShowRewardAd();
+        AdmobManager.instance.ShowRewardAd();
+        Debug.Log("±¤°í");
+        AccountManager.instance.GiveGold(5000);
+        Debug.Log("µ·Áö±Þ");
+        AccountManager.instance.SaveAccount();
+        Debug.Log("µ·ÀúÀå");
     }
 
 }

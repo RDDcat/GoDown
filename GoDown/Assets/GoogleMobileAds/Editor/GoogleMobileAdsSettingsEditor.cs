@@ -1,6 +1,8 @@
 using System.IO;
-
+#if UNITY_EDITOR
 using UnityEditor;
+
+
 using UnityEngine;
 
 namespace GoogleMobileAds.Editor
@@ -76,3 +78,4 @@ namespace GoogleMobileAds.Editor
         }
     }
 }
+#endif

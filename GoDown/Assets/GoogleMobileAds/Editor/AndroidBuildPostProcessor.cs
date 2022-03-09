@@ -1,6 +1,8 @@
 #if UNITY_ANDROID
 using System;
+#if UNITY_EDITOR
 using UnityEditor;
+
 using UnityEditor.Callbacks;
 
 using GoogleMobileAds.Editor;
@@ -41,4 +43,5 @@ public static class AndroidBuildPostProcessor
     }
 }
 
+#endif
 #endif

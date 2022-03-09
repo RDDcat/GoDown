@@ -73,9 +73,10 @@ public class AccountManager : MonoBehaviour
     }
     public long GiveGold(long G)
     {
-        long result = G;
+        long result =  accountVO.gold + G;
         return result;
     }
+
     public long GetGold()
     {
         long result = (long)Mathf.Sqrt(score) + gold * 4;
